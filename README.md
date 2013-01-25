@@ -11,7 +11,7 @@ StreamHub.
 
 
 ### Prerequisites
-* [Bower](http://twitter.github.com/bower/) - A browser package manager
+* [Bower](http://twitter.github.com/bower/) - A package manager for JavaScript libraries
 
 ### Running the demo
 1. ```git clone git@github.com:cheung31/streamhub-deck.git```
