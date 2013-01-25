@@ -11,7 +11,7 @@ StreamHub.
 
 
 ### Prerequisites
-* [Bower](http://twitter.github.com/bower/)
+* [Bower](http://twitter.github.com/bower/) - A browser package manager
 
 ### Running the demo
 1. ```git clone git@github.com:cheung31/streamhub-deck.git```
@@ -21,7 +21,6 @@ StreamHub.
 5. Navigate to ```localhost:8888``` (or the appropriate port number)
 
 
-<br/>
 ### More about Livefyre [StreamHub](http://livefyre.com/streahub)
 
 For more information about Livefyre
