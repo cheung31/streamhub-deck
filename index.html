@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>StreamHub:Backbone - Deck Example</title>
+    <script src="components/requirejs/require.js"
+            type="text/javascript"></script>
+    <script src="http://zor.t402.livefyre.com/wjs/v3.0.sdk/javascripts/livefyre.js"></script>
+    <script type="text/javascript">
+    // Require.js Config
+    require.config({
+      paths: {
+        jquery: 'components/jquery/jquery',
+        jqueryui: 'components/jquery-ui/ui/jquery-ui.custom',
+        underscore: 'components/underscore/underscore',
+        backbone: 'components/backbone/backbone',
+        "streamhub-ticker": "main",
+        mustache: 'components/mustache/mustache',
+        text: 'components/requirejs-text/text'
+      },
+      packages: [{
+        name: 'streamhub-backbone',
+        location: 'components/streamhub-backbone'
+      }, {
+        name: 'streamhub-deck',
+        location: '.'
+      }],
+      shim: {
+        backbone: {
+            deps: ['underscore', 'jquery'],
+            exports: 'Backbone'
+        },
+        underscore: {
+            exports: '_'
+        },
+        jqueryui: {
+            deps: ['jquery'],
+            exports: '$'
+        },
+        jquery: {
+            exports: '$'
+        }
+      },
+      urlArgs: "_=" +  (new Date()).getTime()
+    });
+    </script>
+    <link rel="stylesheet" type="text/css" href="components/streamhub-backbone/main.css">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <style>
+    body {
+        color: #222;
+        font: 14px sans-serif;
+        line-height: 1.25;
+        background-color: #eee;
+    }
+    .hub-item {
+        background-color: white;
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+        margin: .25em;
+        cursor: pointer;
+        width: 280px;
+        min-height:200px;
+        display:inline-block;
+        vertical-align:top;
+        white-space:normal;
+    }
+    .sort-links a, .filter-links a {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+    </style>
+</head>
+<body>
+<h1>StreamHub Deck</h1>
+
+<!-- The element to place the deck in -->
+<div id="my_deck">
+</div>
+
+<div>
+  User token: <br/><input id='userToken'></input><br/>
+	Message: <br/><input id='newMessage' /><br/>
+	<button id='postMessage'>Post</button><br/>
+	<span id='status'></span>
+</div>
+
+<script type="text/javascript">
+// Now to load the example
+require(['streamhub-backbone', 'streamhub-deck', 'jquery'],
+function(Hub, DeckView, $) {
+    function loadApp (sdk) {
+        // Source-specific templates used by Deck View, etc. (e.g. RSS templates, Twitter templates)
+        var sources = {
+            rss: {
+                template: function (d) {
+                    return Mustache.compile(InstagramHtml)(d);
+                }
+            },
+            twitter: {
+                template: (function () {
+                    var i=0;
+                    return function (d) {
+                        i++;
+                        if (i%4==0) {
+                            return CardTemplate(d);
+                        }
+                        return Mustache.compile(TwitterHtml)(d);
+                    }
+                }())
+            }
+        }
+        
+        // Initialize StreamHub Deck, with multiple collections (articleId's)
+        var deck = new Hub({
+            sdk: sdk,
+            collection: {
+                siteId: "303827",
+                articleId: "scoreboard_demo_0"
+            },
+            view: DeckView,
+            sources: sources, // Source-specific templates, etc. (e.g. RSS templates, Twitter templates)
+            el: document.getElementById('my_deck') // The element containing the deck
+        });
+
+        //var col1 = new Hub.Collection().setRemote({
+        //        sdk: sdk,
+        //        siteId: "303827",
+        //        articleId: "scoreboard_demo_0"
+        //    });
+        //    
+        //var col2 = new Hub.Collection().setRemote({
+        //    sdk: sdk,
+        //    siteId: "303827",
+        //    articleId: "scoreboard_demo_0"
+        //});
+        //    
+        //var col3 = new Hub.Collection().setRemote({
+        //    sdk: sdk,
+        //    siteId: "303827",
+        //    articleId: "scoreboard_demo_0"
+        //});
+        //    
+        //var col4 = new Hub.Collection().setRemote({
+        //    sdk: sdk,
+        //    siteId: "303827",
+        //    articleId: "scoreboard_demo_0"
+        //});
+        //    
+        //var col5 = new Hub.Collection().setRemote({
+        //    sdk: sdk,
+        //    siteId: "303827",
+        //    articleId: "scoreboard_demo_0"
+        //});
+//
+        //var view = new DeckView({
+        //    collection: col1, 
+        //    el: document.getElementById("my_deck"),
+        //    collections: [col2, col3, col4, col5]
+        //});
+        //view.render();
+
+
+        //deck.start(); // Start consuming content from the Hub to display in Deck
+
+        //var col_width = 307;
+        //var viewport_width = $(window).width();
+        //$('.deck-columns').css('width', ((apps.length) * col_width) + viewport_width - 75);
+
+
+	    $('#postMessage').click(function() {
+	    	$('#status').text('Submitting...');
+	    	deck._collection._sdkCollection.setUserToken($('#userToken').val());
+	    	deck._collection._sdkCollection.postContent({bodyHtml: $('#newMessage').val()}, function() {
+	    		$('#status').text('Success: ' + JSON.stringify(arguments));
+	    		$('#newMessage').val('');
+	    	}, function() {
+	    		$('#status').text('Failed: ' + JSON.stringify(arguments));
+	    	});
+	    	return false;
+	    });
+    }
+
+    fyre.conv.load({
+        network: "labs-t402.fyre.co"
+    }, [{app: 'sdk'}], loadApp);
+});
+</script>
+</body>
+</html>
