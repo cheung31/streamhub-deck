@@ -27,7 +27,6 @@ var DeckView = Backbone.View.extend({
 
         var feedViews = [];
         this.collections.unshift(this.collection);
-        console.warn(this.collections);
         for (var i = 0; i < this.collections.length; i++) {
             var col = this.collections[i];
 
