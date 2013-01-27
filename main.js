@@ -13,8 +13,10 @@ var DeckView = Backbone.View.extend({
         if (opts.template) {
             this.template = opts.template;
         }
-        this.render();
-        //this.listenTo(this.model, "change", this.render);
+        if (opts.collections) {
+            this.collections = opts.collections;
+        }
+        // call render method externally
     },
     className: 'hub-DeckView',
     render: function() {
@@ -23,25 +25,9 @@ var DeckView = Backbone.View.extend({
         $deckColumns.addClass('deck-columns').addClass('feeds');
         this.$el.append($deckColumns);
 
-        //<div class="feeds deck-columns" style="width: 10000px">
-        //    <section class="brand deck-col" id="brand-0">
-        //        <div class="feed-heading green-gradient">
-        //            <h2>Samsung</h2>
-        //        </div>
-        //        <div class="deck-col-scroll">
-        //            <div class="feed" id="brand-0-env">
-        //                <div class="loading-placeholder" style="height: 300px; margin-bottom: 10px; background-color: #5475a6;"></div>
-        //                <div class="loading-placeholder" style="height: 200px; margin-bottom: 10px; background-color: #5475a6;"></div>
-        //                <div class="loading-placeholder" style="height: 200px; margin-bottom: 10px; background-color: #5475a6;"></div>
-        //                <div class="loading-placeholder" style="height: 300px; margin-bottom: 10px; background-color: #5475a6;"></div>
-        //                <div class="loading-placeholder" style="height: 200px; margin-bottom: 10px; background-color: #5475a6;"></div>
-        //                <div class="loading-placeholder" style="height: 200px; margin-bottom: 10px; background-color: #5475a6;"></div>
-        //            </div>
-        //        </div>
-        //    </section>
-        //</div>
         var feedViews = [];
-        this.collections = [this.collection, this.collection, this.collection];
+        this.collections.unshift(this.collection);
+        console.warn(this.collections);
         for (var i = 0; i < this.collections.length; i++) {
             var col = this.collections[i];
 

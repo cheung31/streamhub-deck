@@ -110,58 +110,39 @@ function(Hub, DeckView, $) {
             }
         }
         
-        // Initialize StreamHub Deck, with multiple collections (articleId's)
-        var deck = new Hub({
-            sdk: sdk,
-            collection: {
-                siteId: "303827",
-                articleId: "scoreboard_demo_0"
-            },
-            view: DeckView,
-            sources: sources, // Source-specific templates, etc. (e.g. RSS templates, Twitter templates)
-            el: document.getElementById('my_deck') // The element containing the deck
-        });
-
-        //var col1 = new Hub.Collection().setRemote({
-        //        sdk: sdk,
+        //// Initialize StreamHub Deck, with multiple collections (articleId's)
+        //var deck = new Hub({
+        //    sdk: sdk,
+        //    collection: {
         //        siteId: "303827",
         //        articleId: "scoreboard_demo_0"
-        //    });
-        //    
-        //var col2 = new Hub.Collection().setRemote({
-        //    sdk: sdk,
-        //    siteId: "303827",
-        //    articleId: "scoreboard_demo_0"
+        //    },
+        //    view: DeckView,
+        //    sources: sources, // Source-specific templates, etc. (e.g. RSS templates, Twitter templates)
+        //    el: document.getElementById('my_deck') // The element containing the deck
         //});
-        //    
-        //var col3 = new Hub.Collection().setRemote({
-        //    sdk: sdk,
-        //    siteId: "303827",
-        //    articleId: "scoreboard_demo_0"
-        //});
-        //    
-        //var col4 = new Hub.Collection().setRemote({
-        //    sdk: sdk,
-        //    siteId: "303827",
-        //    articleId: "scoreboard_demo_0"
-        //});
-        //    
-        //var col5 = new Hub.Collection().setRemote({
-        //    sdk: sdk,
-        //    siteId: "303827",
-        //    articleId: "scoreboard_demo_0"
-        //});
-//
-        //var view = new DeckView({
-        //    collection: col1, 
-        //    el: document.getElementById("my_deck"),
-        //    collections: [col2, col3, col4, col5]
-        //});
-        //view.render();
 
+        var col1 = new Hub.Collection().setRemote({
+                sdk: sdk,
+                siteId: "303827",
+                articleId: "scoreboard_demo_0"
+            });
+            
+        var col2 = new Hub.Collection().setRemote({
+            sdk: sdk,
+            siteId: "303827",
+            articleId: "feed_ticker_0"
+        });
 
-        //deck.start(); // Start consuming content from the Hub to display in Deck
+        var view = new DeckView({
+            collection: col1, 
+            el: document.getElementById("my_deck"),
+            collections: [col2],
+            sources: sources
+        });
+        view.render();
 
+        //// Calculate proper deck scroll width
         //var col_width = 307;
         //var viewport_width = $(window).width();
         //$('.deck-columns').css('width', ((apps.length) * col_width) + viewport_width - 75);
