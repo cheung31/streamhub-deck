@@ -122,17 +122,20 @@ function(Hub, DeckView, $) {
         //    el: document.getElementById('my_deck') // The element containing the deck
         //});
 
+        var collections = [];
         var col1 = new Hub.Collection().setRemote({
                 sdk: sdk,
                 siteId: "303827",
                 articleId: "scoreboard_demo_0"
             });
+        collections.push(col1);
             
         var col2 = new Hub.Collection().setRemote({
             sdk: sdk,
             siteId: "303827",
             articleId: "feed_ticker_0"
         });
+        collections.push(col2);
 
         var view = new DeckView({
             collection: col1, 
@@ -143,15 +146,15 @@ function(Hub, DeckView, $) {
         view.render();
 
         //// Calculate proper deck scroll width
-        //var col_width = 307;
+        var col_width = 307;
         //var viewport_width = $(window).width();
-        //$('.deck-columns').css('width', ((apps.length) * col_width) + viewport_width - 75);
+        $('.deck-columns').css('width', ((collections.length+1) * col_width) );
 
 
 	    $('#postMessage').click(function() {
-	    	$('#status').text('Submitting...');
-	    	deck._collection._sdkCollection.setUserToken($('#userToken').val());
-	    	deck._collection._sdkCollection.postContent({bodyHtml: $('#newMessage').val()}, function() {
+	        $('#status').text('Submitting...');
+	        col1._sdkCollection.setUserToken($('#userToken').val());
+	        col1._sdkCollection.postContent({bodyHtml: $('#newMessage').val()}, function() {
 	    		$('#status').text('Success: ' + JSON.stringify(arguments));
 	    		$('#newMessage').val('');
 	    	}, function() {
