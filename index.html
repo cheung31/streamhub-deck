@@ -133,15 +133,15 @@ function(Hub, DeckView, $) {
 
         // Initialize DeckView with collections
         var view = new DeckView({
-            collection: col1, 
             el: document.getElementById("my_deck"),
-            collections: [col2],
-            headings: [
+            collections: [
                 {
+                    collection: col1,
                     title: 'Title 1',
                     body: 'http://www.youtube.com/embed/ESEdOAQuYQ4'
                 },
                 {
+                    collection: col2,
                     title: 'Title 2',
                     body: 'http://www.youtube.com/embed/mHXx7HCibEg'
                 }

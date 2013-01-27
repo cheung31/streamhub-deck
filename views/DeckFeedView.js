@@ -12,16 +12,16 @@ var DeckFeedView = Backbone.View.extend({
         this.defaultAvatarUrl = opts.defaultAvatarUrl; // Placeholder Avatar, when there is a missing avatar
         this.$el.addClass(this.className);
         this.template = opts.template;
-        this.heading = opts.heading;
+        this.title = opts.title;
+        this.body = opts.body
         // call render method externally
     },
     className: 'hub-DeckFeedView',
     render: function() {
         // Setup heading
-        console.warn(this.heading.title, this.heading.body);
         var $heading = $(Mustache.compile(DeckFeedColumnHeadingTemplate)({
-            heading_title: this.heading.title,
-            heading_body: this.heading.body
+            heading_title: this.title,
+            heading_body: this.body
         }));
         var $deckScroll = this.$el.parents('.deck-col-scroll');
         $deckScroll.before($heading);

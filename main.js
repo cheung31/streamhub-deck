@@ -17,7 +17,6 @@ var DeckView = Backbone.View.extend({
         if (opts.collections) {
             this.collections = opts.collections;
         }
-        this.headings = opts.headings;
         // call render method externally
     },
     className: 'hub-DeckView',
@@ -27,8 +26,6 @@ var DeckView = Backbone.View.extend({
         $deckColumns.addClass('deck-columns').addClass('feeds');
         this.$el.append($deckColumns);
 
-        this.collections.unshift(this.collection);
-        console.warn(this.collections);
         for (var i = 0; i < this.collections.length; i++) {
             var col = this.collections[i];
 
@@ -45,14 +42,14 @@ var DeckView = Backbone.View.extend({
             $feed.addClass('feed');
             $deckColScroll.append($feed);
 
-            var heading = this.headings[i];
             var deckFeedView = new DeckFeedView({
-                collection: col,
+                collection: col.collection,
                 el: $feed,
                 template: function (d) {
                     return Mustache.compile(DeckFeedColumnTemplate)(d);
                 },
-                heading: heading
+                title: col.title,
+                body: col.body
             });
             deckFeedView.render();
         }
