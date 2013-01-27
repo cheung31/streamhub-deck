@@ -33,7 +33,7 @@
 .deck-col-scroll {
     float: left;
     position: absolute;
-    top: 35px;
+    top: 0;
     left: 0;
     bottom: 0;
     width: 299px;
@@ -41,6 +41,9 @@
     overflow-y: auto;
     min-height: 200px;
     -webkit-overflow-scrolling: touch;
+}
+.deck-col-heading {
+    overflow: hidden;
 }
 .feed {
 	vertical-align: top;
