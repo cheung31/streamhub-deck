@@ -1,7 +1,7 @@
 define(function(require) {
 var Backbone = require('backbone'),
     Mustache = require('mustache'),
-    FeedView = require('streamhub-backbone/views/FeedView'),
+    DeckFeedView = require('views/DeckFeedView'),
     sources = require('streamhub-backbone/const/sources'),
     _ = require('underscore');
     $ui = require('jqueryui');
@@ -43,11 +43,12 @@ var DeckView = Backbone.View.extend({
             $feed.addClass('feed');
             $deckColScroll.append($feed);
 
-            var feedView = new FeedView({
+            var deckFeedView = new DeckFeedView({
                 collection: col,
                 el: $feed
             });
-            feedViews.push(feedView);
+            deckFeedView.render();
+            feedViews.push(deckFeedView);
         }
 
         this.$el.fadeIn();
