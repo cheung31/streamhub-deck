@@ -2,7 +2,7 @@ define(function(require) {
 var Backbone = require('backbone'),
     Mustache = require('mustache'),
     DeckFeedView = require('streamhub-deck/views/DeckFeedView'),
-    DeckFeedColumnTemplate = require('text!templates/DeckFeedColumn.html'),
+    DeckFeedColumnTemplate = require('text!streamhub-deck/templates/DeckFeedColumn.html'),
     sources = require('streamhub-backbone/const/sources'),
     _ = require('underscore');
     $ui = require('jqueryui');
