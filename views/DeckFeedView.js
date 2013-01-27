@@ -5,7 +5,6 @@ var Backbone = require('backbone'),
     DeckFeedColumnHeadingTemplate = require('text!streamhub-deck/templates/DeckFeedColumnHeading.html'),
     sources = require('streamhub-backbone/const/sources'),
     _ = require('underscore');
-    $ui = require('jqueryui');
 
 var DeckFeedView = Backbone.View.extend({
     initialize: function(opts) {

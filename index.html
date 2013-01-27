@@ -10,7 +10,6 @@
     require.config({
       paths: {
         jquery: 'components/jquery/jquery',
-        jqueryui: 'components/jquery-ui/ui/jquery-ui.custom',
         underscore: 'components/underscore/underscore',
         backbone: 'components/backbone/backbone',
         "streamhub-ticker": "main",
@@ -31,10 +30,6 @@
         },
         underscore: {
             exports: '_'
-        },
-        jqueryui: {
-            deps: ['jquery'],
-            exports: '$'
         },
         jquery: {
             exports: '$'
