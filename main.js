@@ -25,7 +25,6 @@ var DeckView = Backbone.View.extend({
         $deckColumns.addClass('deck-columns').addClass('feeds');
         this.$el.append($deckColumns);
 
-        var feedViews = [];
         this.collections.unshift(this.collection);
         for (var i = 0; i < this.collections.length; i++) {
             var col = this.collections[i];
@@ -48,7 +47,6 @@ var DeckView = Backbone.View.extend({
                 el: $feed
             });
             deckFeedView.render();
-            feedViews.push(deckFeedView);
         }
 
         this.$el.fadeIn();
