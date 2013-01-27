@@ -2,6 +2,7 @@ define(function(require) {
 var Backbone = require('backbone'),
     Mustache = require('mustache'),
     FeedView = require('streamhub-backbone/views/FeedView'),
+    DeckFeedColumnHeadingTemplate = require('text!../templates/DeckFeedColumnHeading.html'),
     sources = require('streamhub-backbone/const/sources'),
     _ = require('underscore');
     $ui = require('jqueryui');
@@ -10,26 +11,27 @@ var DeckFeedView = Backbone.View.extend({
     initialize: function(opts) {
         this.defaultAvatarUrl = opts.defaultAvatarUrl; // Placeholder Avatar, when there is a missing avatar
         this.$el.addClass(this.className);
-        if (opts.template) {
-            this.template = opts.template;
-        }
-        if (opts.collections) {
-            this.collections = opts.collections;
-        }
-        if (opts.heading) {
-            this.heading = opts.heading;
-        }
+        this.template = opts.template;
+        this.heading = opts.heading;
         // call render method externally
     },
     className: 'hub-DeckFeedView',
     render: function() {
+        // Setup heading
+        console.warn(this.heading.title, this.heading.body);
+        var $heading = $(Mustache.compile(DeckFeedColumnHeadingTemplate)({
+            heading_title: this.heading.title,
+            heading_body: this.heading.body
+        }));
+        var $deckScroll = this.$el.parents('.deck-col-scroll');
+        $deckScroll.before($heading);
+        $deckScroll.css('top', parseInt($deckScroll.css('top')) + $heading.height());
+        
         // Setup container elements required for Deck view
-        if (this.heading) {
-            var $heading = $(document.createElement('section'));
-            $heading.addClass('deck-col-heading');
-            this.$el.append($heading);
+        if (this.template) {
+            this.$el.html(this.template());
         }
-        $feed = $(document.createElement('div'));
+        $feed = $('.deck-col-feed', this.$el);
         this.$el.append($feed);
 
         var feedView = new FeedView({
