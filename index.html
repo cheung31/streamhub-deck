@@ -122,22 +122,6 @@ function(Hub, DeckView, deckConfig, $) {
             collections.push(col);
         }
 
-        //var collections = [];
-        //// Collection 1
-        //var col1 = new Hub.Collection().setRemote({
-        //        sdk: sdk,
-        //        siteId: "303827",
-        //        articleId: "scoreboard_demo_0"
-        //    });
-        //collections.push(col1);
-        //// Collection 2
-        //var col2 = new Hub.Collection().setRemote({
-        //    sdk: sdk,
-        //    siteId: "303827",
-        //    articleId: "feed_ticker_0"
-        //});
-        //collections.push(col2);
-
         // Initialize DeckView with collections
         var view = new DeckView({
             el: document.getElementById("my_deck"),
