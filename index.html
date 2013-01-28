@@ -84,8 +84,8 @@
 
 <script type="text/javascript">
 // Now to load the example
-require(['streamhub-backbone', 'streamhub-deck', 'jquery'],
-function(Hub, DeckView, $) {
+require(['streamhub-backbone', 'streamhub-deck', 'config', 'jquery'],
+function(Hub, DeckView, deckConfig, $) {
     function loadApp (sdk) {
         // Source-specific templates used by Deck View, etc. (e.g. RSS templates, Twitter templates)
         //var sources = {
@@ -110,36 +110,38 @@ function(Hub, DeckView, $) {
         
         //// Initialize DeckView, with multiple collections (articleId's)
         var collections = [];
-        // Collection 1
-        var col1 = new Hub.Collection().setRemote({
+        for (var i = 0; i < deckConfig.collections.length; i++) {
+            var collectionMeta = deckConfig.collections[i];
+            var col = new Hub.Collection().setRemote({
                 sdk: sdk,
-                siteId: "303827",
-                articleId: "scoreboard_demo_0"
+                siteId: collectionMeta.siteId,
+                articleId: collectionMeta.articleId
             });
-        collections.push(col1);
-        // Collection 2
-        var col2 = new Hub.Collection().setRemote({
-            sdk: sdk,
-            siteId: "303827",
-            articleId: "feed_ticker_0"
-        });
-        collections.push(col2);
+            col.headingTitle = collectionMeta.headingTitle;
+            col.headingBody = collectionMeta.headingBody;
+            collections.push(col);
+        }
+
+        //var collections = [];
+        //// Collection 1
+        //var col1 = new Hub.Collection().setRemote({
+        //        sdk: sdk,
+        //        siteId: "303827",
+        //        articleId: "scoreboard_demo_0"
+        //    });
+        //collections.push(col1);
+        //// Collection 2
+        //var col2 = new Hub.Collection().setRemote({
+        //    sdk: sdk,
+        //    siteId: "303827",
+        //    articleId: "feed_ticker_0"
+        //});
+        //collections.push(col2);
 
         // Initialize DeckView with collections
         var view = new DeckView({
             el: document.getElementById("my_deck"),
-            collections: [
-                {
-                    collection: col1,
-                    title: 'Title 1',
-                    body: 'http://www.youtube.com/embed/ESEdOAQuYQ4'
-                },
-                {
-                    collection: col2,
-                    title: 'Title 2',
-                    body: 'http://www.youtube.com/embed/mHXx7HCibEg'
-                }
-            ]
+            collections: collections
         });
         view.render();
 

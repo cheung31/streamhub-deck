@@ -42,13 +42,11 @@ var DeckView = Backbone.View.extend({
             $deckColScroll.append($feed);
 
             var deckFeedView = new DeckFeedView({
-                collection: col.collection,
+                collection: col,
                 el: $feed,
                 template: function (d) {
                     return Mustache.compile(DeckFeedColumnTemplate)(d);
-                },
-                title: col.title,
-                body: col.body
+                }
             });
             deckFeedView.render();
         }
