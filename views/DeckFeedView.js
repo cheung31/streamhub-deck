@@ -15,11 +15,8 @@ var DeckFeedView = Backbone.View.extend({
     },
     className: 'hub-DeckFeedView',
     render: function() {
-        // Setup heading
-        var $heading = $(Mustache.compile(DeckFeedColumnHeadingTemplate)({
-            heading_title: this.collection.headingTitle,
-            heading_body: this.collection.headingBody
-        }));
+        $heading = this.setupHeading();
+
         var $deckScroll = this.$el.parents('.deck-col-scroll');
         $deckScroll.before($heading);
         $deckScroll.css('top', parseInt($deckScroll.css('top')) + $heading.height());
@@ -39,6 +36,14 @@ var DeckFeedView = Backbone.View.extend({
         // Transition from placeholder to the feed content
         this.$el.fadeIn();
         this.$el.prev('.loading-indicator').hide();
+    },
+    setupHeading: function() {
+        // Setup heading
+        var $heading = $(Mustache.compile(DeckFeedColumnHeadingTemplate)({
+            heading_title: this.collection.headingTitle,
+            heading_body: this.collection.headingBody
+        }));
+        return $heading;
     }
 });
 

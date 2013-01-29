@@ -108,7 +108,7 @@ function(Hub, DeckView, deckConfig, $) {
         //    }
         //}
         
-        //// Initialize DeckView, with multiple collections (articleId's)
+        // Initialize DeckView, with multiple collections (articleId's)
         var collections = [];
         for (var i = 0; i < deckConfig.collections.length; i++) {
             var collectionMeta = deckConfig.collections[i];
@@ -117,8 +117,7 @@ function(Hub, DeckView, deckConfig, $) {
                 siteId: collectionMeta.siteId,
                 articleId: collectionMeta.articleId
             });
-            col.headingTitle = collectionMeta.headingTitle;
-            col.headingBody = collectionMeta.headingBody;
+            $.extend(col, collectionMeta);
             collections.push(col);
         }
 

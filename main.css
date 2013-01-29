@@ -135,3 +135,22 @@ body {
         height: 48px;
     }
 }
+
+/* Youtube Deck */
+.deck-col-body {
+    position: relative;
+}
+.deck-yt-play {
+    cursor: pointer;
+    position: absolute;
+    top: 50px;
+    left: 110px;
+    width: 86px;
+    height: 61px;
+    background: url(/images/yt-buttons.png) no-repeat 0px -61px;
+    opacity: 0.95;
+}
+.deck-yt-play:hover {
+    background: url(/images/yt-buttons.png) no-repeat 0px 0px;
+    opacity: 1;
+}
