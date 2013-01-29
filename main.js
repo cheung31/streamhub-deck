@@ -1,7 +1,7 @@
 define(function(require) {
 var Backbone = require('backbone'),
     Mustache = require('mustache'),
-    YoutubeDeckFeedView = require('streamhub-deck/views/YoutubeDeckFeedView'),
+    DeckFeedView = require('streamhub-deck/views/DeckFeedView'),
     DeckFeedColumnTemplate = require('text!streamhub-deck/templates/DeckFeedColumn.html'),
     sources = require('streamhub-backbone/const/sources'),
     _ = require('underscore');
@@ -16,6 +16,7 @@ var DeckView = Backbone.View.extend({
         if (opts.collections) {
             this.collections = opts.collections;
         }
+        this._feedView = opts.feedView || DeckFeedView;
         // call render method externally
     },
     className: 'hub-DeckView',
@@ -41,14 +42,14 @@ var DeckView = Backbone.View.extend({
             $feed.addClass('feed');
             $deckColScroll.append($feed);
 
-            var ytDeckFeedView = new YoutubeDeckFeedView({
+            var deckFeedView = new this._feedView({
                 collection: col,
                 el: $feed,
                 template: function (d) {
                     return Mustache.compile(DeckFeedColumnTemplate)(d);
                 }
             });
-            ytDeckFeedView.render();
+            deckFeedView.render();
         }
 
         this.$el.fadeIn();
