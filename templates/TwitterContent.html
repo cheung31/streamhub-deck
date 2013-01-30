@@ -3,7 +3,11 @@
 		{{#author.avatar}}
 		<a class="hub-avatar"><img src="{{ author.avatar }}" /></a>
 		{{/author.avatar}}
-		<p class="hub-byline"><span class="hub-author">{{ author.displayName }}</span><a class="hub-timestamp">{{formattedCreatedAt}}</a></p>
+		<p class="hub-byline">
+            <span class="hub-author">{{ author.displayName }}</span>
+            <a class="hub-timestamp">{{formattedCreatedAt}}</a>
+            <img src="/images/twitter-icon.png" />
+        </p>
 	</div>
 	<div class="hub-body">
 		<div class="hub-body-html">
