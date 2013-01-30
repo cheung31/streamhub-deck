@@ -35,7 +35,7 @@ var DeckFeedView = Backbone.View.extend({
             twitter: {
                 template: function (d) {
                     // Attempt to set the tweet_id for the template
-                    var content_id = content.get('id');
+                    var content_id = d.get('id');
                     if (content_id) {
                         d.set('tweet_id', content_id.split('@twitter.com')[0].substring('tweet-'.length));
                     }
