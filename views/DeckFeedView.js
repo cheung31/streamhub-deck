@@ -41,7 +41,7 @@ var DeckFeedView = Backbone.View.extend({
                     }
                     // Attempt to get photo attachment
                     if (d.attachments && d.attachments[0].thumbnail_url) {
-                        d.image_url = thumbnail_url;
+                        d.image_url = d.attachments[0].thumbnail_url;
                     }
                     return Mustache.compile(TwitterContentTemplate)(d);
                 }
