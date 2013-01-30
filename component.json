@@ -1,5 +1,5 @@
 {
-  "name": "streamhub-ticker",
+  "name": "streamhub-deck",
   "version": "1.0.0",
   "main": [
     "./main.css",
