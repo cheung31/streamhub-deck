@@ -5,7 +5,7 @@
 		{{/author.avatar}}
 		<p class="hub-byline">
             <span class="hub-author">{{ author.displayName }}</span>
-            <img src="/images/twitter-icon.png" />
+            <img src="images/twitter-icon.png" />
             <a class="hub-timestamp">{{formattedCreatedAt}}</a>
         </p>
 	</div>
@@ -17,7 +17,7 @@
 		{{ #image_url }}
 			<div class="hub-attachment hub-attachment-photo">
 				<!--<img onerror="console.log('BROKEN IMAGE rss', this.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode); this.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode.parentNode.parentNode.parentNode);" src="{{ url }}" />-->
-                <div class="hub-tweet-photo" style="background: url('{{ image_url }}')">
+                <div class="hub-tweet-photo" style="background-image: url('{{ image_url }}')">
                 </div>
 			</div>
 		{{ /image_url }}
