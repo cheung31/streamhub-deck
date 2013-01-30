@@ -152,5 +152,5 @@ body {
 }
 .deck-yt-play:hover {
     background: url(/images/yt-buttons.png) no-repeat 0px 0px;
-    opacity: 1;
+    opacity: 0.95;
 }
