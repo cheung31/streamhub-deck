@@ -39,6 +39,10 @@ var DeckFeedView = Backbone.View.extend({
                     if (content_id) {
                         d.tweet_id = content_id.split('@twitter.com')[0].substring('tweet-'.length);
                     }
+                    // Attempt to get photo attachment
+                    if (d.attachments && d.attachments[0].thumbnail_url) {
+                        d.image_url = thumbnail_url;
+                    }
                     return Mustache.compile(TwitterContentTemplate)(d);
                 }
             }
