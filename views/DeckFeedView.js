@@ -3,6 +3,8 @@ var Backbone = require('backbone'),
     Mustache = require('mustache'),
     FeedView = require('streamhub-backbone/views/FeedView'),
     DeckFeedColumnHeadingTemplate = require('text!streamhub-deck/templates/DeckFeedColumnHeading.html'),
+    // Content Templates
+    TwitterContentTemplate = require('text!streamhub-deck/templates/TwitterContent.html'),
     sources = require('streamhub-backbone/const/sources'),
     _ = require('underscore');
 
@@ -28,9 +30,19 @@ var DeckFeedView = Backbone.View.extend({
         $feed = $('.deck-col-feed', this.$el);
         this.$el.append($feed);
 
+        // Supported sources and their templates
+        var sources = {
+            twitter: {
+                template: function () {
+                    return Mustache.compile(TwitterContentTemplate)(d);
+                }
+            }
+        };
+
         var feedView = new FeedView({
             collection: this.collection,
-            el: $feed
+            el: $feed,
+            sources: sources
         });
 
         // Transition from placeholder to the feed content

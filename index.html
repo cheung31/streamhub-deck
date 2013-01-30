@@ -84,7 +84,11 @@
 
 <script type="text/javascript">
 // Now to load the example
-require(['streamhub-backbone', 'streamhub-deck', 'streamhub-deck/views/YoutubeDeckFeedView','config', 'jquery'],
+require(['streamhub-backbone',
+         'streamhub-deck',
+         'streamhub-deck/views/YoutubeDeckFeedView',
+         'config',
+         'jquery'],
 function(Hub, DeckView, YoutubeDeckFeedView, deckConfig, $) {
     function loadApp (sdk) {
         // Source-specific templates used by Deck View, etc. (e.g. RSS templates, Twitter templates)
