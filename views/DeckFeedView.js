@@ -33,7 +33,7 @@ var DeckFeedView = Backbone.View.extend({
         // Supported sources and their templates
         var sources = {
             twitter: {
-                template: function () {
+                template: function (d) {
                     return Mustache.compile(TwitterContentTemplate)(d);
                 }
             }
