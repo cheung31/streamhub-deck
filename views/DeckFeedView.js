@@ -13,6 +13,7 @@ var DeckFeedView = Backbone.View.extend({
         this.defaultAvatarUrl = opts.defaultAvatarUrl; // Placeholder Avatar, when there is a missing avatar
         this.$el.addClass(this.className);
         this.template = opts.template;
+        this.sources = opts.sources || {};
         // call render method externally
     },
     className: 'hub-DeckFeedView',
@@ -30,28 +31,10 @@ var DeckFeedView = Backbone.View.extend({
         $feed = $('.deck-col-feed', this.$el);
         this.$el.append($feed);
 
-        // Supported sources and their templates
-        var sources = {
-            twitter: {
-                template: function (d) {
-                    // Attempt to set the tweet_id for the template
-                    var content_id = d.id;
-                    if (content_id) {
-                        d.tweet_id = content_id.split('@twitter.com')[0].substring('tweet-'.length);
-                    }
-                    // Attempt to get photo attachment
-                    if (d.attachments && d.attachments[0].thumbnail_url) {
-                        d.image_url = d.attachments[0].thumbnail_url;
-                    }
-                    return Mustache.compile(TwitterContentTemplate)(d);
-                }
-            }
-        };
-
         var feedView = new FeedView({
             collection: this.collection,
             el: $feed,
-            sources: sources
+            sources: this.sources
         });
 
         // Transition from placeholder to the feed content

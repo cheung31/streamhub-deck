@@ -16,6 +16,7 @@ var DeckView = Backbone.View.extend({
         if (opts.collections) {
             this.collections = opts.collections;
         }
+        this.sources = opts.sources || {};
         this._feedView = opts.feedView || DeckFeedView;
         // call render method externally
     },
@@ -47,7 +48,8 @@ var DeckView = Backbone.View.extend({
                 el: $feed,
                 template: function (d) {
                     return Mustache.compile(DeckFeedColumnTemplate)(d);
-                }
+                },
+                sources: this.sources
             });
             deckFeedView.render();
         }

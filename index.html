@@ -87,31 +87,36 @@
 require(['streamhub-backbone',
          'streamhub-deck',
          'streamhub-deck/views/YoutubeDeckFeedView',
+         'mustache',
+         'text!streamhub-deck/templates/TwitterContent.html',
          'config',
          'jquery'],
-function(Hub, DeckView, YoutubeDeckFeedView, deckConfig, $) {
+function(Hub, DeckView, YoutubeDeckFeedView, Mustache, TwitterContentTemplate, deckConfig, $) {
     function loadApp (sdk) {
         // Source-specific templates used by Deck View, etc. (e.g. RSS templates, Twitter templates)
-        //var sources = {
-        //    rss: {
-        //        template: function (d) {
-        //            return Mustache.compile(InstagramHtml)(d);
-        //        }
-        //    },
-        //    twitter: {
-        //        template: (function () {
-        //            var i=0;
-        //            return function (d) {
-        //                i++;
-        //                if (i%4==0) {
-        //                    return CardTemplate(d);
-        //                }
-        //                return Mustache.compile(TwitterHtml)(d);
-        //            }
-        //        }())
-        //    }
-        //}
-        
+        // Supported sources and their templates
+        var sources = {
+            twitter: {
+                template: function (d) {
+                    // Attempt to set the tweet_id for the template
+                    var content_id = d.id;
+                    if (content_id) {
+                        d.tweet_id = content_id.split('@twitter.com')[0].substring('tweet-'.length);
+                    }
+                    // Attempt to get photo attachment
+                    if (d.attachments && d.attachments[0].thumbnail_url) {
+                        d.image_url = d.attachments[0].thumbnail_url;
+                    }
+                    return Mustache.compile(TwitterContentTemplate)(d);
+                }
+            },
+            rss: {
+                template: function (d) {
+                    return Mustache.compile(InstagramHtml)(d);
+                }
+            }
+        };
+
         // Initialize DeckView, with multiple collections (articleId's)
         var collections = [];
         for (var i = 0; i < deckConfig.collections.length; i++) {
@@ -129,7 +134,8 @@ function(Hub, DeckView, YoutubeDeckFeedView, deckConfig, $) {
         var view = new DeckView({
             el: document.getElementById("my_deck"),
             collections: collections,
-            feedView: YoutubeDeckFeedView
+            feedView: YoutubeDeckFeedView,
+            sources: sources
         });
         view.render();
 
