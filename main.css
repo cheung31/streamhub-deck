@@ -36,6 +36,10 @@ body {
     margin: 0 0.25em;
     position: relative;
 }
+.deck-col-feedview-holder {
+    position: relative;
+    height: 100%;
+}
 .deck-col-scroll {
     float: left;
     position: absolute;
