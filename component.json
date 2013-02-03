@@ -1,11 +1,11 @@
 {
   "name": "streamhub-deck",
-  "version": "1.0.0",
+  "version": "1.0.1-alpha.ben.0",
   "main": [
     "./main.css",
     "./main.js"
   ],
   "dependencies": {
-    "streamhub-backbone": "*"
+    "streamhub-backbone": "v1.1.0-alpha.2"
   }
 }
