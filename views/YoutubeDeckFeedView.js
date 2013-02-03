@@ -2,6 +2,7 @@ define(function(require) {
 var Backbone = require('backbone'),
     Mustache = require('mustache'),
     DeckFeedView = require('streamhub-deck/views/DeckFeedView'),
+    Content = require('streamhub-backbone/models/Content'),
     YoutubeDeckFeedColumnHeadingTemplate = require('text!streamhub-deck/templates/YoutubeDeckFeedColumnHeading.html'),
     sources = require('streamhub-backbone/const/sources'),
     _ = require('underscore');
@@ -96,14 +97,23 @@ var YoutubeDeckFeedView = DeckFeedView.extend({
 YoutubeDeckFeedView.prototype.onSubmitPost = function onSubmitPost (e) {
     e.preventDefault();
 
+    var self = this;
+
     var $form = $(e.target),
         formDataArray = $form.serializeArray(),
         formData = mergeFormArray(formDataArray);
 
     this.collection.post($.extend(formData, {
-        success: _.bind(function () {
+        success: _.bind(function (data) {
             // Clear form
             this.$heading.find('input[type=text]').val('');
+
+            var user = self.collection.user && self.collection.user.toJSON();
+            if (user) {
+                data.author = user;
+            }
+            var c = new Content(data);
+            self.collection.add(c);
             console.log("YT post success", arguments);
         }, this),
         error: function () {
