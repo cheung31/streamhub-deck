@@ -6,6 +6,6 @@
     "./main.js"
   ],
   "dependencies": {
-    "streamhub-backbone": "v1.1.0-alpha.2"
+    "streamhub-backbone": "v1.1.0-alpha.3"
   }
 }
