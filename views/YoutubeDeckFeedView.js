@@ -8,12 +8,17 @@ var Backbone = require('backbone'),
 
 var YoutubeDeckFeedView = DeckFeedView.extend({
     setupHeading: function() {
+        var placeholders = this._postFormPlaceholders || [''],
+            placeholder = placeholders[Math.floor(Math.random() * placeholders.length)];
+
         // Setup heading
         var $heading = $(Mustache.compile(YoutubeDeckFeedColumnHeadingTemplate)({
             headingTitle: this.collection.headingTitle,
             youtubeId: this.collection.youtubeId,
-            postForm: this._postForm
+            postForm: this._postForm,
+            postFormPlaceholder: placeholder
         }));
+
         this.$heading = $heading;
 
         var self = this;

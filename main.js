@@ -19,6 +19,7 @@ var DeckView = Backbone.View.extend({
         this.sources = opts.sources || {};
         this._postForm = opts.postForm || false;
         this._feedView = opts.feedView || DeckFeedView;
+        this._feedViewOptions = opts.feedViewOptions;
         // call render method externally
     },
     className: 'hub-DeckView',
@@ -45,7 +46,7 @@ var DeckView = Backbone.View.extend({
             $feed.addClass('feed');
             $deckColScroll.append($feed);
 
-            var deckFeedView = new this._feedView({
+            var deckFeedView = new this._feedView(_.extend({
                 collection: col,
                 el: $feed,
                 template: function (d) {
@@ -53,7 +54,8 @@ var DeckView = Backbone.View.extend({
                 },
                 postForm: this._postForm,
                 sources: this.sources
-            });
+            }, this._feedViewOptions));
+
             deckFeedView.render();
         }
 

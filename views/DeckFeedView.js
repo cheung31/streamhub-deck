@@ -15,6 +15,7 @@ var DeckFeedView = Backbone.View.extend({
         this.template = opts.template;
         this.sources = opts.sources || {};
         this._postForm = opts.postForm || false;
+        this._postFormPlaceholders = opts.postFormPlaceholders
         // call render method externally
     },
     className: 'hub-DeckFeedView',
