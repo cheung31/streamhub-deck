@@ -17,6 +17,7 @@ var DeckView = Backbone.View.extend({
             this.collections = opts.collections;
         }
         this.sources = opts.sources || {};
+        this._postForm = opts.postForm || false;
         this._feedView = opts.feedView || DeckFeedView;
         // call render method externally
     },
@@ -35,9 +36,10 @@ var DeckView = Backbone.View.extend({
             $deckCol.addClass('deck-col');
             $deckColumns.append($deckCol);
 
+            $deckCol.append('<div class="deck-col-feedview-holder"></div>')
             $deckColScroll = $(document.createElement('div'));
             $deckColScroll.addClass('deck-col-scroll');
-            $deckCol.append($deckColScroll);
+            $deckCol.find('.deck-col-feedview-holder').append($deckColScroll);
 
             $feed = $(document.createElement('div'));
             $feed.addClass('feed');
@@ -49,6 +51,7 @@ var DeckView = Backbone.View.extend({
                 template: function (d) {
                     return Mustache.compile(DeckFeedColumnTemplate)(d);
                 },
+                postForm: this._postForm,
                 sources: this.sources
             });
             deckFeedView.render();

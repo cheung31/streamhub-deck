@@ -14,15 +14,14 @@ var DeckFeedView = Backbone.View.extend({
         this.$el.addClass(this.className);
         this.template = opts.template;
         this.sources = opts.sources || {};
+        this._postForm = opts.postForm || false;
         // call render method externally
     },
     className: 'hub-DeckFeedView',
     render: function() {
         $heading = this.setupHeading();
-
-        var $deckScroll = this.$el.parents('.deck-col-scroll');
-        $deckScroll.before($heading);
-        $deckScroll.css('top', parseInt($deckScroll.css('top')) + $heading.height());
+        var $deckScroll = this.$el.parents('.deck-col');
+        $deckScroll.prepend($heading);
         
         // Setup container elements required for Deck view
         if (this.template) {

@@ -11,7 +11,8 @@ var YoutubeDeckFeedView = DeckFeedView.extend({
         // Setup heading
         var $heading = $(Mustache.compile(YoutubeDeckFeedColumnHeadingTemplate)({
             headingTitle: this.collection.headingTitle,
-            youtubeId: this.collection.youtubeId
+            youtubeId: this.collection.youtubeId,
+            postForm: this._postForm
         }));
         this.$heading = $heading;
 
@@ -20,6 +21,9 @@ var YoutubeDeckFeedView = DeckFeedView.extend({
             e.preventDefault();
             self.embedVideo();
         });
+
+        $heading.on('submit', 'form', _.bind(this.onSubmitPost, this));
+
         return $heading;
     },
     embedVideo: function() {
@@ -83,6 +87,33 @@ var YoutubeDeckFeedView = DeckFeedView.extend({
         }
     }
 });
+
+YoutubeDeckFeedView.prototype.onSubmitPost = function onSubmitPost (e) {
+    e.preventDefault();
+
+    var $form = $(e.target),
+        formDataArray = $form.serializeArray(),
+        formData = mergeFormArray(formDataArray);
+
+    this.collection.post($.extend(formData, {
+        success: _.bind(function () {
+            // Clear form
+            this.$heading.find('input[type=text]').val('');
+            console.log("YT post success", arguments);
+        }, this),
+        error: function () {
+            console.log("YT post error", arguments);
+        }
+    }));
+
+    function mergeFormArray (formDataArray) {
+        var out = {};
+        _(formDataArray).each(function(obj) {
+            out[obj.name] = obj.value;
+        });
+        return out;
+    }
+};
 
 return YoutubeDeckFeedView;
 });
