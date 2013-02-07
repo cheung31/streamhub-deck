@@ -1,15 +1,14 @@
 /**
  * Deck View, a module for presenting StreamHub collection(s) in a
  * TweetDeck-columned layout
- * @version 1.0.0
- * @module streamhub-deck
+ * @module DeckView
+ *
  * @requires backbone
  * @requires mustache
  * @requires DeckFeedView
  * @requires DeckFeedColumnTemplate
  * @requires sources
  * @requires underscore
- * @author Ryan Cheung - http://github.com/cheung31
  */
 define(function(require) {
 var fyre = require('fyre'),
@@ -21,18 +20,24 @@ var fyre = require('fyre'),
     _ = require('underscore');
 
 /**
- * @class DeckView
+ * Deck View - A view with a TweetDeck-like layout of StreamHub content
+ * @alias module:DeckView
+ * @constructor
  * @extends Backbone.View
- * @param {object} opts - Options specifying template, collections, sources,
- *                        postForm feedView, feedViewOptions
+ * @param {Object.<string, *>} opts A set of options to configure an instance
+ * @param {string} opts.template A mustache template string
+ * @param {Array} opts.collections An aray of Collections to build the Deck View columns
+ * @param {Object.<string, *>} opts.sources A set of sources specifying Content View templates to use for content provided from specific sources.
+ * @param {boolean} opts.postForm Whether to show an input box for a user to post content to a collection
+ * @param {FeedView} opts.feedView The type of Feed View to use for each column.
+ * @param {Object.<string, *>} opts.feedViewOptions A set of options to configure an instance
  */
-var DeckView = Backbone.View.extend(
-    /** @lends DeckView.prototype */
-    {
+var DeckView = Backbone.View.extend({
     /**
      * Initializes the DeckView instance
-     * @param {object} opts - Options specifying template, collections, sources,
-     *                        postForm feedView, feedViewOptions
+     * @param {Object.<string, *>} opts - Options specifying template, collections, sources,
+     *                        postForm feedView, feedViewOptions for the
+     *                        DeckView instance
      */
     initialize: function(opts) {
         this.defaultAvatarUrl = opts.defaultAvatarUrl; // Placeholder Avatar, when there is a missing avatar
@@ -51,7 +56,8 @@ var DeckView = Backbone.View.extend(
     },
 
     /**
-     * @property {string} className - The class name added to the element which will contain the Deck View 
+     * @property {string} className The class name added to the element which will contain the Deck View 
+     * @default hub-DeckView
      */
     className: 'hub-DeckView',
 
