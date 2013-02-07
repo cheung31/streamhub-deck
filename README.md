@@ -1,8 +1,7 @@
 streamhub-deck
 =====
 
-![Livefyre
-StreamHub](http://www.livefyre.com/site_media/images/corp_v5/streamhub.png)
+![Livefyre StreamHub](http://www.livefyre.com/site_media/images/corp_v5/streamhub.png)
 
 ## Overview
 

@@ -1,3 +1,16 @@
+/**
+ * Deck View, a module for presenting StreamHub collection(s) in a
+ * TweetDeck-columned layout
+ * @version 1.0.0
+ * @module DeckView
+ * @requires backbone
+ * @requires mustache
+ * @requires DeckFeedView
+ * @requires DeckFeedColumnTemplate
+ * @requires sources
+ * @requires underscore
+ * @author Ryan Cheung - http://github.com/cheung31
+ */
 define(function(require) {
 var fyre = require('fyre'),
     Backbone = require('backbone'),
@@ -7,7 +20,20 @@ var fyre = require('fyre'),
     sources = require('streamhub-backbone/const/sources'),
     _ = require('underscore');
 
-var DeckView = Backbone.View.extend({
+/**
+ * @class DeckView
+ * @extends Backbone.View
+ * @param {object} opts - Options specifying template, collections, sources,
+ *                        postForm feedView, feedViewOptions
+ */
+var DeckView = Backbone.View.extend(
+    /** @lends DeckView.prototype */
+    {
+    /**
+     * Initializes the DeckView instance
+     * @param {object} opts - Options specifying template, collections, sources,
+     *                        postForm feedView, feedViewOptions
+     */
     initialize: function(opts) {
         this.defaultAvatarUrl = opts.defaultAvatarUrl; // Placeholder Avatar, when there is a missing avatar
         this.$el.addClass(this.className);
@@ -23,7 +49,17 @@ var DeckView = Backbone.View.extend({
         this._feedViewOptions = opts.feedViewOptions;
         // call render method externally
     },
+
+    /**
+     * @property {string} className - The class name added to the element which will contain the Deck View 
+     */
     className: 'hub-DeckView',
+
+    /**
+     * Render the Deck View onto the page in the Deck View's container element. Show the
+     * initial content of the collection
+     * @method
+     */
     render: function() {
         // Setup container elements required for Deck view
         var $deckColumns = $(document.createElement('div'));
