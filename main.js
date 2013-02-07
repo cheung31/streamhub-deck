@@ -1,21 +1,12 @@
 /**
  * Deck View, a module for presenting StreamHub collection(s) in a
  * TweetDeck-columned layout
- * @module DeckView
- * @extends Backbone.View
- * @exports streamhub-deck/DeckView
- * @requires backbone
- * @requires mustache
- * @requires DeckFeedView
- * @requires DeckFeedColumnTemplate
- * @requires sources
- * @requires underscore
- *
  * @version 1.0.0
  * @author Ryan Cheung - http://github.com/cheung31
  */
-define('DeckView', function(require) {
-var Backbone = require('backbone'),
+define(function(require) {
+var fyre = require('fyre'),
+    Backbone = require('backbone'),
     Mustache = require('mustache'),
     DeckFeedView = require('streamhub-deck/views/DeckFeedView'),
     DeckFeedColumnTemplate = require('text!streamhub-deck/templates/DeckFeedColumn.html'),
@@ -23,15 +14,22 @@ var Backbone = require('backbone'),
     _ = require('underscore');
 
 /**
- * @constructor
- * @alias module:DeckView
+ * @class DeckView
+ * @extends Backbone.View
+ * @requires backbone
+ * @requires mustache
+ * @requires DeckFeedView
+ * @requires DeckFeedColumnTemplate
+ * @requires sources
+ * @requires underscore
  * @param {object} opts - Options specifying template, collections, sources,
  *                        postForm feedView, feedViewOptions
  */
-var DeckView = Backbone.View.extend({
+var DeckView = Backbone.View.extend(
+    /** @lends DeckView.prototype */
+    {
     /**
      * Initializes the DeckView instance
-     * @private
      * @param {object} opts - Options specifying template, collections, sources,
      *                        postForm feedView, feedViewOptions
      */
@@ -59,6 +57,7 @@ var DeckView = Backbone.View.extend({
     /**
      * Render the Deck View onto the page in the Deck View's container element. Show the
      * initial content of the collection
+     * @method
      */
     render: function() {
         // Setup container elements required for Deck view
