@@ -2,6 +2,13 @@
  * Deck View, a module for presenting StreamHub collection(s) in a
  * TweetDeck-columned layout
  * @version 1.0.0
+ * @module DeckView
+ * @requires backbone
+ * @requires mustache
+ * @requires DeckFeedView
+ * @requires DeckFeedColumnTemplate
+ * @requires sources
+ * @requires underscore
  * @author Ryan Cheung - http://github.com/cheung31
  */
 define(function(require) {
@@ -16,12 +23,6 @@ var fyre = require('fyre'),
 /**
  * @class DeckView
  * @extends Backbone.View
- * @requires backbone
- * @requires mustache
- * @requires DeckFeedView
- * @requires DeckFeedColumnTemplate
- * @requires sources
- * @requires underscore
  * @param {object} opts - Options specifying template, collections, sources,
  *                        postForm feedView, feedViewOptions
  */
