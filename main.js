@@ -2,7 +2,7 @@
  * Deck View, a module for presenting StreamHub collection(s) in a
  * TweetDeck-columned layout
  * @version 1.0.0
- * @module streamhub-deck/DeckView
+ * @module streamhub-deck
  * @requires backbone
  * @requires mustache
  * @requires DeckFeedView
