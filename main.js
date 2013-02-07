@@ -1,5 +1,6 @@
 define(function(require) {
-var Backbone = require('backbone'),
+var fyre = require('fyre'),
+    Backbone = require('backbone'),
     Mustache = require('mustache'),
     DeckFeedView = require('streamhub-deck/views/DeckFeedView'),
     DeckFeedColumnTemplate = require('text!streamhub-deck/templates/DeckFeedColumn.html'),
