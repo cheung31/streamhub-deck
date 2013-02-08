@@ -1,6 +1,6 @@
 # StreamHub Deck
 
-Add a *"[TweetDeck](http://tweetdeck.com)"*-esque columned widget of content from [StreamHub-Backbone](http://gobengo.github.com/streamhub-backbone/).
+Add a *"[TweetDeck](http://tweetdeck.com)"*-esque columned widget of content from [StreamHub-Backbone](http://gobengo.github.com/streamhub-backbone/) to your website.
 
 ### What is Livefyre StreamHub?
 [Livefyre StreamHub](http://www.livefyre.com/streamhub/) is the web's first Engagement Management System. StreamHub turns your site into a real-time social experience. Curate images, videos, and Tweets from across the social web, right into live blogs, chats, widgets, and dashboards. The world's biggest publishers and brands use StreamHub to power their online Content Communities.
