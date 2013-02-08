@@ -5,14 +5,19 @@
         jquery: 'components/jquery/jquery',
         underscore: 'components/underscore/underscore',
         backbone: 'components/backbone/backbone',
-        "streamhub-deck": ".",
         mustache: 'components/mustache/mustache',
         text: 'components/requirejs-text/text'
     },
-    packages: [{
-        name: 'streamhub-backbone',
-        location: 'components/streamhub-backbone'
-    }],
+    packages: [
+        {
+            name: 'streamhub-deck',
+            location: '.'
+        },
+        {
+            name: 'streamhub-backbone',
+            location: 'components/streamhub-backbone'
+        }
+    ],
     shim: {
         'backbone': {
             deps: ['underscore', 'jquery'],
