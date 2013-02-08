@@ -1,5 +1,5 @@
 /**
- * Deck View, a module for presenting StreamHub collection(s) in a
+ * DeckView, a module for presenting StreamHub collection(s) in a
  * TweetDeck-columned layout
  * @module DeckView
  *
@@ -20,7 +20,7 @@ var fyre = require('fyre'),
     _ = require('underscore');
 
 /**
- * Deck View - A view with a TweetDeck-like layout of StreamHub content
+ * DeckView - A view with a TweetDeck-like layout of StreamHub content
  * @alias module:DeckView
  * @constructor
  * @extends Backbone.View

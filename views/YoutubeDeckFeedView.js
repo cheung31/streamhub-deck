@@ -1,3 +1,14 @@
+/**
+ * YoutubeDeckFeedView, a module 
+ * @module YoutubeDeckFeedView
+ *
+ * @requires backbone
+ * @requires mustache
+ * @requires DeckFeedView
+ * @requires YoutubeDeckFeedColumnTemplate
+ * @requires sources
+ * @requires underscore
+ */
 define(function(require) {
 var Backbone = require('backbone'),
     Mustache = require('mustache'),
@@ -7,7 +18,24 @@ var Backbone = require('backbone'),
     sources = require('streamhub-backbone/const/sources'),
     _ = require('underscore');
 
+/**
+ * YoutubeDeckFeedView - A view representing a single feed/column of StreamHub content. As used with DeckView.
+ * @alias module:DeckFeedView
+ * @constructor
+ * @extends module:DeckFeedView
+ * @param {Object.<string, *>} opts A set of options to configure an instance
+ * @param {string} opts.template A mustache template string
+ * @param {Object.<string, *>} opts.sources A set of sources specifying Content View templates to use for content provided from specific sources.
+ * @param {boolean} opts.postForm Whether to show an input box for a user to post content to a collection
+ * @param {Array.<string>} opts.postFormPlaceholders A list of placeholder text to use for the postForm input box
+ */
 var YoutubeDeckFeedView = DeckFeedView.extend({
+    /**
+     * Get an element that will be the heading of a Deck Feed column.
+     * initial content of the collection
+     * @method
+     * @return {HTMLElement} The element representing the heading of a Deck Feed column.
+     */
     setupHeading: function() {
         var placeholders = this._postFormPlaceholders || [''],
             placeholder = placeholders[Math.floor(Math.random() * placeholders.length)];
@@ -32,6 +60,12 @@ var YoutubeDeckFeedView = DeckFeedView.extend({
 
         return $heading;
     },
+
+    /**
+     * A helper method to replace the youtube photo/play button images with an
+     * actual embedded Youtube player when the play button is clicked
+     * @method
+     */
     embedVideo: function() {
         var youtubeId = this.collection.youtubeId;
         var $headingBody = $('.deck-col-body', this.$heading);
@@ -94,6 +128,12 @@ var YoutubeDeckFeedView = DeckFeedView.extend({
     }
 });
 
+
+/**
+ * Callback for when a post form is submitted by the user in an attemp to post
+ * content to the Deck Feed.
+ * @method
+ */
 YoutubeDeckFeedView.prototype.onSubmitPost = function onSubmitPost (e) {
     e.preventDefault();
 
