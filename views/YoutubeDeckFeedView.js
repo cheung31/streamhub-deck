@@ -20,7 +20,7 @@ var Backbone = require('backbone'),
 
 /**
  * YoutubeDeckFeedView - A view representing a single feed/column of StreamHub content. As used with DeckView.
- * @alias module:DeckFeedView
+ * @alias module:YoutubeDeckFeedView
  * @constructor
  * @extends module:DeckFeedView
  * @param {Object.<string, *>} opts A set of options to configure an instance
