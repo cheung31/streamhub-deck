@@ -6,13 +6,12 @@
         underscore: 'components/underscore/underscore',
         backbone: 'components/backbone/backbone',
         mustache: 'components/mustache/mustache',
-        text: 'components/requirejs-text/text'
+        text: 'components/requirejs-text/text',
+        'streamhub-deck': 'main',
+        'streamhub-deck/views': 'views',
+        'streamhub-deck/templates': 'templates'
     },
     packages: [
-        {
-            name: 'streamhub-deck',
-            location: '.'
-        },
         {
             name: 'streamhub-backbone',
             location: 'components/streamhub-backbone'
@@ -25,9 +24,12 @@
         },
         'underscore': {
             exports: '_'
-        }
+        },
+        fyre: {
+            exports: 'fyre'
+        },
     },
     name: "tools/almond",
     out: "streamhub-deck.almond.js",
-    include: ['main']
+    include: ['streamhub-backbone', 'streamhub-deck']
 })
