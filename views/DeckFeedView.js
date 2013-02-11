@@ -90,8 +90,8 @@ var DeckFeedView = Backbone.View.extend({
     setupHeading: function() {
         // Setup heading
         var $heading = $(Mustache.compile(DeckFeedColumnHeadingTemplate)({
-            heading_title: this.collection.headingTitle,
-            heading_body: this.collection.headingBody
+            headingTitle: this.collection.headingTitle,
+            headingBody: this.collection.headingBody
         }));
         return $heading;
     }

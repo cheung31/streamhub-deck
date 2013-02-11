@@ -1,12 +1,13 @@
 ({
     baseUrl: "..",
     paths: {
-        fyre: 'http://zor.t402.livefyre.com/wjs/v3.0/javascripts/livefyre',
+        fyre: 'tools/livefyre',
         jquery: 'components/jquery/jquery',
         underscore: 'components/underscore/underscore',
         backbone: 'components/backbone/backbone',
         mustache: 'components/mustache/mustache',
         text: 'components/requirejs-text/text',
+        config: 'config',
         'streamhub-deck': 'main',
         'streamhub-deck/views': 'views',
         'streamhub-deck/templates': 'templates'
@@ -25,7 +26,7 @@
         'underscore': {
             exports: '_'
         },
-        fyre: {
+        'fyre': {
             exports: 'fyre'
         },
     },
