@@ -1,6 +1,6 @@
 {
 	"name": "streamhub-deck",
-	"description": "Add a "TweetDeck"-esque columned widget of content from StreamHub-Backbone.",
+	"description": "Add a 'TweetDeck'-esque columned widget of content from StreamHub-Backbone.",
 	"author": {
 		"name": "Ryan Cheung"
 	},
