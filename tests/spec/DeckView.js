@@ -79,32 +79,5 @@ describe('DeckView', function () {
         });
     });
 
-    xdescribe ("when constructed using the initialNumToDisplay option", function () {
-        beforeEach(function () {
-            setFixtures('<div id="env"></div>');
-            this.view = new DeckView({
-                el: $('#env'),
-                collection: new Hub.Collection(),
-                initialNumToDisplay: 5
-            });
-        });
-        describe ("when rendered", function () {
-            it ("only has N images on first imagesLoaded event", function () {
-                var initialImagesLoaded = false;
-                runs(function () {
-                    this.view.render();
-                    this.view.$el.imagesLoaded(function () {
-                        initialImagesLoaded = true;
-                    });
-                });
-                waitsFor(function () {
-                    return initialImagesLoaded;
-                });
-                runs(function () {
-                    // check for only that many images?
-                });
-            });
-        });
-    });
 }); 
 });
