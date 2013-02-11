@@ -1,5 +1,5 @@
 /**
- * Deck View, a module for presenting StreamHub collection(s) in a
+ * DeckView, a module for presenting StreamHub collection(s) in a
  * TweetDeck-columned layout
  * @module DeckView
  *
@@ -16,11 +16,12 @@ var fyre = require('fyre'),
     Mustache = require('mustache'),
     DeckFeedView = require('streamhub-deck/views/DeckFeedView'),
     DeckFeedColumnTemplate = require('text!streamhub-deck/templates/DeckFeedColumn.html'),
+    config = require('config'),
     sources = require('streamhub-backbone/const/sources'),
     _ = require('underscore');
 
 /**
- * Deck View - A view with a TweetDeck-like layout of StreamHub content
+ * DeckView - A view with a TweetDeck-like layout of StreamHub content
  * @alias module:DeckView
  * @constructor
  * @extends Backbone.View
