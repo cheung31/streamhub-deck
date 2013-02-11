@@ -139,12 +139,6 @@ function(Hub, DeckView, YoutubeDeckFeedView, Mustache, TwitterContentTemplate, d
         });
         view.render();
 
-        //// Calculate proper deck scroll width
-        var col_width = 307;
-        //var viewport_width = $(window).width();
-        $('.deck-columns').css('width', ((collections.length+1) * col_width) + ($('.deck-col').eq(0).offset().left) * collections.length);
-
-
         // Set up message posting to collection 1
 	    $('#postMessage').click(function() {
 	        $('#status').text('Submitting...');
