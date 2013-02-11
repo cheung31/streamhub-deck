@@ -83,11 +83,6 @@ You can specify the StreamHub collections that will appear in the Deck columns, 
             sources: sources
         });
         view.render();
-
-        //// Calculate proper deck scroll width
-        var col_width = 307;
-        //var viewport_width = $(window).width();
-        $('.deck-columns').css('width', ((collections.length+1) * col_width) + ($('.deck-col').eq(0).offset().left) * collections.length);
         
 
 ## Getting Started
