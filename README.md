@@ -37,7 +37,7 @@ You can specify the StreamHub collections that will appear in the Deck columns, 
         });
 
 		
-##### Loading the ```DeckView```
+##### Rendering the ```DeckView```
         // Source-specific templates used by Deck View, etc. (e.g. RSS templates, Twitter templates)
         // Supported sources and their templates
         var sources = {
