@@ -197,6 +197,32 @@ function(Hub, DeckView, DeckFeedView, Mustache, TwitterContentTemplate, deckConf
 </script>
 
 <h2>Example Usage</h2>
+<h4>Configuring StreamHub collections to appear in Deck columns</h4>
+<p>
+    You can specify the StreamHub collections that will appear in the Deck
+    columns, and the title/heading that will appear above each corresponding
+    Deck column in config.js.
+</p>
+<pre><code>
+define({
+    collections: [
+        {
+            siteId: 303827,
+            articleId: 'scoreboard_demo_0',
+            headingTitle: 'Title 1',
+            youtubeId: 'ESEdOAQuYQ4'
+        },
+        {
+            siteId: 303827,
+            articleId: 'feed_ticker_0',
+            headingTitle: 'Title 2',
+            youtubeId: 'mHXx7HCibEg'
+        }
+    ]
+});
+</code></pre>
+
+<h4>Rendering the DeckView</h4>
 <pre><code>
 // Source-specific templates used by Deck View, etc. (e.g. RSS templates, Twitter templates)
 // Supported sources and their templates
