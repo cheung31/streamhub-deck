@@ -15,8 +15,8 @@ StreamHub Deck is a widget that can be plugged into your website to display the 
 > The StreamHub Deck as used in the [Livefyre Super Bowl NewsHub](http://superbowl.livefyre.com/#/commercials/)
 ![Super Bowl NewsHub Deck](https://raw.github.com/cheung31/streamhub-deck/0_jsdoc/images/sb-deck.png)
 
-### Example Usage
-##### Configuring StreamHub collections to appear in Deck columns
+## Example Usage
+#### Configuring StreamHub collections to appear in Deck columns
 You can specify the StreamHub collections that will appear in the Deck columns, and the title/heading that will appear above each corresponding Deck column in ```config.js```.
 
        define({
@@ -37,7 +37,7 @@ You can specify the StreamHub collections that will appear in the Deck columns, 
         });
 
 		
-##### Rendering the ```DeckView```
+#### Rendering the ```DeckView```
         // Source-specific templates used by Deck View, etc. (e.g. RSS templates, Twitter templates)
         // Supported sources and their templates
         var sources = {
@@ -90,15 +90,43 @@ You can specify the StreamHub collections that will appear in the Deck columns, 
         $('.deck-columns').css('width', ((collections.length+1) * col_width) + ($('.deck-col').eq(0).offset().left) * collections.length);
         
 
-### Prequisites
-* [Bower](http://twitter.github.com/bower/)
+## Getting Started
+#### Getting the ```streamhub-deck``` module with ```npm```
+```npm``` is used to install the [Bower](http://twitter.github.com/bower/) browser package management system. The latest stable version of ```streamhub-deck``` and its dependencies are installed into ```/components```.
 
-### Running the demo
+#### Loading the ```streamhub-deck``` module with RequireJS
+Now that the ```streamhub-deck``` module is installed. It needs to be loaded with an [AMD](http://requirejs.org/docs/whyamd.html) loader. [RequireJS](http://requirejs.org/) is recommended.
+
+In the [RequireJS config](http://requirejs.org/docs/api.html#config) add ```streamhub-deck``` as a package:
+
+    require.config({
+    …
+        packages: [{
+            name: 'streamhub-deck',
+            location: 'components/streamhub-deck' //The path to streamhub-deck module
+        }]
+    …
+    });
+
+As a result, all dependencies of ```streamhub-deck``` are now loaded. That allows us to use the ```streamhub-deck``` module like so:
+
+    require(["streamhub-deck"], function(DeckView) {
+        //See the Example Usage above on how to use DeckView!
+    });
+    
+## Running the Demo
+To see the Deck View in action:
+
 1. ```git clone git@github.com:cheung31/streamhub-deck.git```
 2. ```cd streamhub-deck```
-3. ```bower install```
-4. ```python -m SimpleHTTPServer 8888``` (or another server of your choice)
-5. Navigate to ```localhost:8888``` (or the appropriate port number)
+3. ```npm start```
 
-### Authors and Contributors
+To see the demo: <http://localhost:8080>
+
+To see the docs: <http://localhost:8080/docs>
+
+To see the tests: <http://localhost:8080/tests>
+
+
+## Authors and Contributors
 2013, Ryan Cheung (@cheung31), Ben Goering (@bengo) for Livefyre Labs.
