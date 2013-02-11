@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Module: DeckView</title>
+    <title>JSDoc: Module: YoutubeDeckFeedView</title>
     
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">Module: DeckView</h1>
+    <h1 class="page-title">Module: YoutubeDeckFeedView</h1>
     
     
 
@@ -27,7 +27,7 @@
     
 <header>
     <h2>
-    DeckView
+    YoutubeDeckFeedView
     </h2>
     
 </header>  
@@ -37,7 +37,7 @@
     
         
 <dt>
-    <h4 class="name" id="module:DeckView"><span class="type-signature"></span>new require("DeckView")<span class="signature">(opts)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="module:YoutubeDeckFeedView"><span class="type-signature"></span>new require("YoutubeDeckFeedView")<span class="signature">(opts)</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -45,7 +45,7 @@
     
     
     <div class="description">
-        <p>DeckView - A view with a TweetDeck-like layout of StreamHub content</p>
+        <p>YoutubeDeckFeedView - A view representing a single feed/column of StreamHub content. As used with DeckView.</p>
     </div>
     
 
@@ -144,29 +144,6 @@
 	
         <tr>
             
-                <td class="name"><code>collections</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Array</span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last"><p>An aray of Collections to build the Deck View columns</p></td>
-        </tr>
-	
-	
-	
-        <tr>
-            
                 <td class="name"><code>sources</code></td>
             
             
@@ -213,13 +190,13 @@
 	
         <tr>
             
-                <td class="name"><code>feedView</code></td>
+                <td class="name"><code>postFormPlaceholders</code></td>
             
             
             <td class="type">
             
                 
-<span class="param-type">FeedView</span>
+<span class="param-type">Array.&lt;string></span>
 
 
             
@@ -229,30 +206,7 @@
             
             
             
-            <td class="description last"><p>The type of Feed View to use for each column.</p></td>
-        </tr>
-	
-	
-	
-        <tr>
-            
-                <td class="name"><code>feedViewOptions</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Object.&lt;string, *></span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last"><p>A set of options to configure an instance</p></td>
+            <td class="description last"><p>A list of placeholder text to use for the postForm input box</p></td>
         </tr>
 	
 	
@@ -289,7 +243,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        main.js, line 35
+        views/YoutubeDeckFeedView.js, line 32
     </li></ul></dd>
     
     
@@ -314,8 +268,7 @@
     
     
         
-            <div class="description"><p>DeckView, a module for presenting StreamHub collection(s) in a
-TweetDeck-columned layout</p></div>
+            <div class="description"><p>YoutubeDeckFeedView, a module</p></div>
         
         
         
@@ -341,7 +294,7 @@ TweetDeck-columned layout</p></div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        main.js, line 1
+        views/YoutubeDeckFeedView.js, line 1
     </li></ul></dd>
     
     
@@ -371,7 +324,7 @@ TweetDeck-columned layout</p></div>
         
             <li><a href="module-DeckFeedView.html">module:DeckFeedView</a></li>
         
-            <li>module:DeckFeedColumnTemplate</li>
+            <li>module:YoutubeDeckFeedColumnTemplate</li>
         
             <li>module:sources</li>
         
@@ -384,112 +337,6 @@ TweetDeck-columned layout</p></div>
     
     
     
-        <h3 class="subsection-title">Members</h3>
-        
-        <dl>
-            
-<dt>
-    <h4 class="name" id="className"><span class="type-signature">&lt;inner> </span>className<span class="type-signature"></span></h4>
-    
-    
-</dt>
-<dd>
-    
-    
-    
-<dl class="details">
-    
-        
-        <h5 class="subsection-title">Properties:</h5>
-        
-        <dl>
-
-<table class="props">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>className</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">string</span>
-
-
-            
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last"><p>The class name added to the element which will contain the Deck View</p></td>
-        </tr>
-	
-	
-	</tbody>
-</table></dl>
-        
-    
-        
-    
-    
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    <dt class="tag-default">Default Value:</dt>
-    <dd class="tag-default"><ul class="dummy"><li>hub-DeckView</li></ul></dd>
-    
-    
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        main.js, line 62
-    </li></ul></dd>
-    
-    
-    
-    
-    
-    
-    
-</dl>
-
-    
-    
-</dd>
-
-        </dl>
-    
     
     
         <h3 class="subsection-title">Methods</h3>
@@ -497,7 +344,7 @@ TweetDeck-columned layout</p></div>
         <dl>
             
 <dt>
-    <h4 class="name" id="initialize"><span class="type-signature">&lt;inner> </span>initialize<span class="signature">(opts)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="onSubmitPost"><span class="type-signature"></span>onSubmitPost<span class="signature">()</span><span class="type-signature"></span></h4>
     
     
 </dt>
@@ -505,7 +352,8 @@ TweetDeck-columned layout</p></div>
     
     
     <div class="description">
-        <p>Initializes the DeckView instance</p>
+        <p>Callback for when a post form is submitted by the user in an attemp to post
+content to the Deck Feed.</p>
     </div>
     
 
@@ -514,55 +362,71 @@ TweetDeck-columned layout</p></div>
     
     
     
-        <h5>Parameters:</h5>
+    
+    
+<dl class="details">
+    
         
+    
+    
+    
 
-<table class="params">
-    <thead>
-	<tr>
-		
-		<th>Name</th>
-		
-		
-		<th>Type</th>
-		
-		
-		
-		
-		
-		<th class="last">Description</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-	
-	
-        <tr>
-            
-                <td class="name"><code>opts</code></td>
-            
-            
-            <td class="type">
-            
-                
-<span class="param-type">Object.&lt;string, *></span>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        views/YoutubeDeckFeedView.js, line 137
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
 
+    
+    
+    
+    
+    
+    
+    
+    
+</dd>
 
+        
             
-            </td>
-            
-            
-            
-            
-            
-            <td class="description last"><p>Options specifying template, collections, sources,
-                       postForm feedView, feedViewOptions for the
-                       DeckView instance</p></td>
-        </tr>
-	
-	
-	</tbody>
-</table>
+<dt>
+    <h4 class="name" id="embedVideo"><span class="type-signature">&lt;inner> </span>embedVideo<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>A helper method to replace the youtube photo/play button images with an
+actual embedded Youtube player when the play button is clicked</p>
+    </div>
+    
+
+    
+    
+    
+    
     
     
     
@@ -588,7 +452,7 @@ TweetDeck-columned layout</p></div>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        main.js, line 42
+        views/YoutubeDeckFeedView.js, line 69
     </li></ul></dd>
     
     
@@ -612,7 +476,7 @@ TweetDeck-columned layout</p></div>
         
             
 <dt>
-    <h4 class="name" id="render"><span class="type-signature">&lt;inner> </span>render<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="setupHeading"><span class="type-signature">&lt;inner> </span>setupHeading<span class="signature">()</span><span class="type-signature"> &rarr; {HTMLElement}</span></h4>
     
     
 </dt>
@@ -620,7 +484,7 @@ TweetDeck-columned layout</p></div>
     
     
     <div class="description">
-        <p>Render the Deck View onto the page in the Deck View's container element. Show the
+        <p>Get an element that will be the heading of a Deck Feed column.
 initial content of the collection</p>
     </div>
     
@@ -654,7 +518,7 @@ initial content of the collection</p>
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        main.js, line 69
+        views/YoutubeDeckFeedView.js, line 39
     </li></ul></dd>
     
     
@@ -671,6 +535,28 @@ initial content of the collection</p>
     
     
     
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>The element representing the heading of a Deck Feed column.</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">HTMLElement</span>
+
+
+	</dd>
+</dl>
+
+        
     
     
 </dd>
