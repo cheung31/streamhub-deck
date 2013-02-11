@@ -51,7 +51,7 @@
 
 <h3>What is StreamHub Deck?</h3>
 
-<p>StreamHub Deck is a widget that can be plugged into your website to display the social content provided by Livefyre StreamHub via <a href="http://gobengo.githubn.com/streamhub-backbone/">StreamHub-Backbone</a>. As seen in the screenshots above, you can create a TweetDeck-like layout of tweets for various topics relevant to your website/app.</p>
+<p>StreamHub Deck is a widget that can be plugged into your website to display the social content provided by Livefyre StreamHub via <a href="http://gobengo.github.com/streamhub-backbone/">StreamHub-Backbone</a>. As seen in the screenshots below, you can create a TweetDeck-like layout of tweets for various topics relevant to your website/app.</p>
 
 <blockquote>
   <p>The StreamHub Deck with a custom header (title and Youtube video) and tweets as content.
@@ -61,23 +61,120 @@
   <img src="https://raw.github.com/cheung31/streamhub-deck/0_jsdoc/images/sb-deck.png" alt="Super Bowl NewsHub Deck" title="" /></p>
 </blockquote>
 
-<h3>Prerequisites</h3>
+<h2>Example Usage</h2>
 
-<ul>
-<li><a href="http://twitter.github.com/bower/">Bower</a></li>
-</ul>
+<h4>Configuring StreamHub collections to appear in Deck columns</h4>
 
-<h3>Running the demo</h3>
+<p>You can specify the StreamHub collections that will appear in the Deck columns, and the title/heading that will appear above each corresponding Deck column in <div class="highlight"><pre lang="config.js```.">
+       define({
+          collections: [
+              {
+                  siteId: 303827,
+                  articleId: 'scoreboard_demo_0',
+                  headingTitle: 'Title 1',
+                  youtubeId: 'ESEdOAQuYQ4'
+              },
+              {
+                  siteId: 303827,
+                  articleId: 'feed_ticker_0',
+                  headingTitle: 'Title 2',
+                  youtubeId: 'mHXx7HCibEg'
+              }
+          ]
+        });</p>
+
+<h4>Rendering the <code>DeckView</code></h4>
+
+<pre><code>    // Source-specific templates used by Deck View, etc. (e.g. RSS templates, Twitter templates)
+    // Supported sources and their templates
+    var sources = {
+        twitter: {
+            template: function (d) {
+                // Attempt to set the tweet_id for the template
+                var content_id = d.id;
+                if (content_id) {
+                    d.tweet_id = content_id.split('@twitter.com')[0].substring('tweet-'.length);
+                }
+                // Attempt to get photo attachment
+                if (d.attachments &amp;&amp; d.attachments[0].thumbnail_url) {
+                    d.image_url = d.attachments[0].thumbnail_url;
+                }
+                return Mustache.compile(TwitterContentTemplate)(d);
+            }
+        },
+        rss: {
+            template: function (d) {
+                return Mustache.compile(InstagramHtml)(d);
+            }
+        }
+    };
+
+    // Initialize DeckView, with multiple collections (articleId's)
+    var collections = [];
+    for (var i = 0; i &lt; deckConfig.collections.length; i++) {
+        var collectionMeta = deckConfig.collections[i];
+        var col = new Hub.Collection().setRemote({
+            sdk: sdk,
+            siteId: collectionMeta.siteId,
+            articleId: collectionMeta.articleId
+        });
+        $.extend(col, collectionMeta);
+        collections.push(col);
+    }
+
+    // Initialize DeckView with collections
+    var view = new DeckView({
+        el: document.getElementById("my_deck"),
+        collections: collections,
+        feedView: DeckFeedView,
+        sources: sources
+    });
+    view.render();
+</code></pre>
+
+<h2>Getting Started</h2>
+
+<h4>Getting the <code>streamhub-deck</code> module with <code>npm</code></h4>
+
+<p></pre></div>npm<div class="highlight"><pre lang=" is used to install the <a href="http://twitter.github.com/bower/">Bower</a> browser package management system. The latest stable version of `streamhub-deck` and its dependencies are installed into `/components`."></p>
+
+<h4>Loading the <code>streamhub-deck</code> module with RequireJS</h4>
+
+<p>Now that the </pre></div>streamhub-deck<div class="highlight"><pre lang=" module is installed. It needs to be loaded with an <a href="http://requirejs.org/docs/whyamd.html">AMD</a> loader. <a href="http://requirejs.org/">RequireJS</a> is recommended.">
+In the <a href="http://requirejs.org/docs/api.html#config">RequireJS config</a> add </pre></div>streamhub-deck<div class="highlight"><pre lang=" as a package:">
+    require.config({
+    …
+        packages: [{
+            name: 'streamhub-deck',
+            location: 'components/streamhub-deck' //The path to streamhub-deck module
+        }]
+    …
+    });</p>
+
+<p>That allows us to use the </pre></div>streamhub-deck``` module like so with the benefit of its dependencies being loaded as they are needed:</p>
+
+<pre><code>require(["streamhub-deck"], function(DeckView) {
+    //See the Example Usage above on how to use DeckView!
+});
+</code></pre>
+
+<h2>Running the Demo</h2>
+
+<p>To see the Deck View in action:</p>
 
 <ol>
 <li><code>git clone <a href='mailto:git@github.com'>git@github.com</a>:cheung31/streamhub-deck.git</code></li>
 <li><code>cd streamhub-deck</code></li>
-<li><code>bower install</code></li>
-<li><code>python -m SimpleHTTPServer 8888</code> (or another server of your choice)</li>
-<li>Navigate to <code>localhost:8888</code> (or the appropriate port number)</li>
+<li><code>npm start</code></li>
 </ol>
 
-<h3>Authors and Contributors</h3>
+<p>To see the demo: <a href="http://localhost:8080"><a href='http://localhost:8080'>http://localhost:8080</a></a></p>
+
+<p>To see the docs: <a href="http://localhost:8080/docs"><a href='http://localhost:8080/docs'>http://localhost:8080/docs</a></a></p>
+
+<p>To see the tests: <a href="http://localhost:8080/tests"><a href='http://localhost:8080/tests'>http://localhost:8080/tests</a></a></p>
+
+<h2>Authors and Contributors</h2>
 
 <p>2013, Ryan Cheung (@cheung31), Ben Goering (@bengo) for Livefyre Labs.</p></article>
     </section>
@@ -96,7 +193,7 @@
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Fri Feb 08 2013 11:54:43 GMT-0800 (PST)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0-dev</a> on Mon Feb 11 2013 11:20:24 GMT-0800 (PST)
 </footer>
 
 <script> prettyPrint(); </script>

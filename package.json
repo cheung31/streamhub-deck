@@ -13,7 +13,7 @@
 	},
 	"scripts": {
 		"postinstall": "./node_modules/bower/bin/bower install",
-		"doc": "rm -rf docs && ./node_modules/jsdoc/jsdoc -c tools/jsdoc.conf.json main.js README.md -d docs",
+		"doc": "rm -rf docs && ./node_modules/jsdoc/jsdoc -c tools/jsdoc.conf.json main.js views/*.js README.md -d docs",
 		"test": "open tests/index.html",
         "start": "./node_modules/http-server/bin/http-server"
 	}
