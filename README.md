@@ -16,6 +16,28 @@ StreamHub Deck is a widget that can be plugged into your website to display the 
 ![Super Bowl NewsHub Deck](https://raw.github.com/cheung31/streamhub-deck/0_jsdoc/images/sb-deck.png)
 
 ### Example Usage
+##### Configuring StreamHub collections to appear in Deck columns
+You can specify the StreamHub collections that will appear in the Deck columns, and the title/heading that will appear above each corresponding Deck column in ```config.js```.
+
+       define({
+          collections: [
+              {
+                  siteId: 303827,
+                  articleId: 'scoreboard_demo_0',
+                  headingTitle: 'Title 1',
+                  youtubeId: 'ESEdOAQuYQ4'
+              },
+              {
+                  siteId: 303827,
+                  articleId: 'feed_ticker_0',
+                  headingTitle: 'Title 2',
+                  youtubeId: 'mHXx7HCibEg'
+              }
+          ]
+        });
+
+		
+##### Loading the ```DeckView```
         // Source-specific templates used by Deck View, etc. (e.g. RSS templates, Twitter templates)
         // Supported sources and their templates
         var sources = {
@@ -66,6 +88,7 @@ StreamHub Deck is a widget that can be plugged into your website to display the 
         var col_width = 307;
         //var viewport_width = $(window).width();
         $('.deck-columns').css('width', ((collections.length+1) * col_width) + ($('.deck-col').eq(0).offset().left) * collections.length);
+        
 
 ### Prequisites
 * [Bower](http://twitter.github.com/bower/)
