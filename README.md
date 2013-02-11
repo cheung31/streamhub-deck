@@ -103,7 +103,7 @@ In the [RequireJS config](http://requirejs.org/docs/api.html#config) add ```stre
     …
     });
 
-As a result, all dependencies of ```streamhub-deck``` are now loaded. That allows us to use the ```streamhub-deck``` module like so:
+That allows us to use the ```streamhub-deck``` module like so with the benefit of its dependencies being loaded as they are needed:
 
     require(["streamhub-deck"], function(DeckView) {
         //See the Example Usage above on how to use DeckView!
