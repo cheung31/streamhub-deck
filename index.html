@@ -11,6 +11,10 @@
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <link rel="stylesheet" type="text/css" href="components/streamhub-backbone/main.css">
+    <link rel="stylesheet" type="text/css" href="streamhub-deck/main.css">
+    <script src="http://zor.t402.livefyre.com/wjs/v3.0.sdk/javascripts/livefyre.js"></script>
+    <script src="streamhub-deck/streamhub-deck.almond.js"></script>
   </head>
   <body>
     <div class="wrapper">
@@ -28,7 +32,150 @@
         </ul>
       </header>
       <section>
-        <blockquote>
+
+<style>
+    .shadow {
+        -moz-box-shadow:    inset 0 0 5px #999;
+        -webkit-box-shadow: inset 0 0 5px #999;
+        box-shadow:         inset 0 0 5px #999;
+    }
+    #demo {
+        width: 100%;
+        height: 400px;
+        margin-bottom: 25px;
+        padding: 10px;
+    }
+</style>
+
+<h2>Demo</h2>
+<div id="demo" class="shadow"></div>
+<script type="text/javascript">
+// Now to load the example
+require(['streamhub-backbone',
+         'streamhub-deck',
+         'streamhub-deck/views/DeckFeedView',
+         'mustache',
+         'text!streamhub-deck/templates/TwitterContent.html',
+         'config',
+         'jquery'],
+function(Hub, DeckView, DeckFeedView, Mustache, TwitterContentTemplate, deckConfig, $) {
+    function loadApp (sdk) {
+        // Source-specific templates used by Deck View, etc. (e.g. RSS templates, Twitter templates)
+        // Supported sources and their templates
+        var sources = {
+            twitter: {
+                template: function (d) {
+                    // Attempt to set the tweet_id for the template
+                    var content_id = d.id;
+                    if (content_id) {
+                        d.tweet_id = content_id.split('@twitter.com')[0].substring('tweet-'.length);
+                    }
+                    // Attempt to get photo attachment
+                    if (d.attachments && d.attachments[0].thumbnail_url) {
+                        d.image_url = d.attachments[0].thumbnail_url;
+                    }
+                    return Mustache.compile(TwitterContentTemplate)(d);
+                }
+            },
+            rss: {
+                template: function (d) {
+                    return Mustache.compile(InstagramHtml)(d);
+                }
+            }
+        };
+
+        // Initialize DeckView, with multiple collections (articleId's)
+        var collections = [];
+        for (var i = 0; i < deckConfig.collections.length; i++) {
+            var collectionMeta = deckConfig.collections[i];
+            var col = new Hub.Collection().setRemote({
+                sdk: sdk,
+                siteId: collectionMeta.siteId,
+                articleId: collectionMeta.articleId
+            });
+            $.extend(col, collectionMeta);
+            collections.push(col);
+        }
+
+        // Initialize DeckView with collections
+        var view = new DeckView({
+            el: document.getElementById("demo"),
+            collections: collections,
+            feedView: DeckFeedView,
+            sources: sources
+        });
+        view.render();
+
+        //// Calculate proper deck scroll width
+        var col_width = 307;
+        //var viewport_width = $(window).width();
+        $('.deck-columns').css('width', ((collections.length+1) * col_width) + ($('.deck-col').eq(0).offset().left) * collections.length);
+    }
+
+    fyre.conv.load({
+        network: "labs-t402.fyre.co"
+    }, [{app: 'sdk'}], loadApp);
+});
+</script>
+
+<h2>Example Usage</h2>
+<pre><code>
+// Source-specific templates used by Deck View, etc. (e.g. RSS templates, Twitter templates)
+// Supported sources and their templates
+var sources = {
+    twitter: {
+        template: function (d) {
+            // Attempt to set the tweet_id for the template
+            var content_id = d.id;
+            if (content_id) {
+                d.tweet_id = content_id.split('@twitter.com')[0].substring('tweet-'.length);
+            }
+            // Attempt to get photo attachment
+            if (d.attachments && d.attachments[0].thumbnail_url) {
+                d.image_url = d.attachments[0].thumbnail_url;
+            }
+            return Mustache.compile(TwitterContentTemplate)(d);
+        }
+    },
+    rss: {
+        template: function (d) {
+            return Mustache.compile(InstagramHtml)(d);
+        }
+    }
+};
+
+// Initialize DeckView, with multiple collections (articleId's)
+var collections = [];
+for (var i = 0; i < deckConfig.collections.length; i++) {
+    var collectionMeta = deckConfig.collections[i];
+    var col = new Hub.Collection().setRemote({
+        sdk: sdk,
+        siteId: collectionMeta.siteId,
+        articleId: collectionMeta.articleId
+    });
+    $.extend(col, collectionMeta);
+    collections.push(col);
+}
+
+// Initialize DeckView with collections
+var view = new DeckView({
+    el: document.getElementById("demo"),
+    collections: collections,
+    feedView: DeckFeedView,
+    sources: sources
+});
+view.render();
+</code></pre>
+
+<h2>What is Livefyre StreamHub?</h2>
+
+<p><a href="http://www.livefyre.com/streamhub/">Livefyre StreamHub</a> is the web's first Engagement Management System. StreamHub turns your site into a real-time social experience. Curate images, videos, and Tweets from across the social web, right into live blogs, chats, widgets, and dashboards. The world's biggest publishers and brands use StreamHub to power their online Content Communities.</p>
+
+<h2>What is StreamHub Deck?</h2>
+
+<p>StreamHub Deck is a widget that can be plugged into your website to display the social content provided by Livefyre StreamHub. As seen in the screenshots above, you can create a TweetDeck-like layout of tweets for various topics relevant to your website/app.</p>
+
+<blockquote>
 <p>The StreamHub Deck with a custom header (title and Youtube video) and tweets as content.
 <img src="http://d.pr/i/CzlK+" alt="StreamHub Deck"></p>
 
@@ -36,15 +183,7 @@
 <img src="http://d.pr/i/1vpB+" alt="Super Bowl NewsHub Deck"></p>
 </blockquote>
 
-<h3>What is Livefyre StreamHub?</h3>
-
-<p><a href="http://www.livefyre.com/streamhub/">Livefyre StreamHub</a> is the web's first Engagement Management System. StreamHub turns your site into a real-time social experience. Curate images, videos, and Tweets from across the social web, right into live blogs, chats, widgets, and dashboards. The world's biggest publishers and brands use StreamHub to power their online Content Communities.</p>
-
-<h3>What is StreamHub Deck?</h3>
-
-<p>StreamHub Deck is a widget that can be plugged into your website to display the social content provided by Livefyre StreamHub. As seen in the screenshots above, you can create a TweetDeck-like layout of tweets for various topics relevant to your website/app.</p>
-
-<h3>Authors and Contributors</h3>
+<h2>Authors and Contributors</h2>
 
 <p>2013, Ryan Cheung (<a href="https://github.com/cheung31" class="user-mention">@cheung31</a>), Ben Goering (<a href="https://github.com/bengo" class="user-mention">@bengo</a>) for Livefyre Labs.</p>
       </section>
