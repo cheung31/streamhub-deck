@@ -16,7 +16,6 @@ var fyre = require('fyre'),
     Mustache = require('mustache'),
     DeckFeedView = require('streamhub-deck/views/DeckFeedView'),
     DeckFeedColumnTemplate = require('text!streamhub-deck/templates/DeckFeedColumn.html'),
-    config = require('config'),
     sources = require('streamhub-backbone/const/sources'),
     _ = require('underscore');
 
