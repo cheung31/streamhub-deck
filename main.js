@@ -105,7 +105,8 @@ var DeckView = Backbone.View.extend({
         //// Calculate proper deck scroll width
         var col_width = 307;
         //var viewport_width = $(window).width();
-        $('.deck-columns').css('width', ((this.collections.length+1) * col_width) + ($('.deck-col').eq(0).offset().left) * this.collections.length);
+        var columnLeft = ($('.deck-col').eq(0).offset() || {}).left || 0;
+        $('.deck-columns').css('width', ((this.collections.length+1) * col_width) + (columnLeft) * this.collections.length);
 
         this.$el.fadeIn();
         this.$el.prev('.loading-indicator').hide();
