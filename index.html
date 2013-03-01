@@ -4,11 +4,11 @@
     <title>StreamHub:Backbone - Deck Example</title>
     <script src="components/requirejs/require.js"
             type="text/javascript"></script>
-    <script src="http://zor.t402.livefyre.com/wjs/v3.0.sdk/javascripts/livefyre.js"></script>
     <script type="text/javascript">
     // Require.js Config
     require.config({
       paths: {
+        fyre: 'http://zor.t402.livefyre.com/wjs/v3.0/javascripts/livefyre',
         jquery: 'components/jquery/jquery',
         underscore: 'components/underscore/underscore',
         backbone: 'components/backbone/backbone',
@@ -138,12 +138,6 @@ function(Hub, DeckView, YoutubeDeckFeedView, Mustache, TwitterContentTemplate, d
             sources: sources
         });
         view.render();
-
-        //// Calculate proper deck scroll width
-        var col_width = 307;
-        //var viewport_width = $(window).width();
-        $('.deck-columns').css('width', ((collections.length+1) * col_width) + ($('.deck-col').eq(0).offset().left) * collections.length);
-
 
         // Set up message posting to collection 1
 	    $('#postMessage').click(function() {
