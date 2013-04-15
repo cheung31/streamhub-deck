@@ -31,11 +31,6 @@ function($, Hub) {
                 $title.html(self._collections[i].headingTitle);
                 $deckColHeading.append($title);
                 $deckCol.append($deckColHeading);
-
-                $headingContent = self.createHeadingContent(self._collections[i]);
-                if ($headingContent) {
-                    $deckCol.append($headingContent);
-                }
             }
 
             // Create a deck column for a particular stream
@@ -52,23 +47,6 @@ function($, Hub) {
                 el: columnEl
             });
         });
-    };
-
-    DeckView.prototype.createHeadingContent = function(collection) {
-        var $headingContent;
-        if ('youtubeId' in collection) {
-            //require('YoutubeColumnHeading');
-            //var heading = YoutubeColumnHeading();
-
-            // Create youtube player as heading content
-            //$headingContent = $(document.createDocumentFragment());
-            //var $youtubeThumb = $(document.createElement('img'));
-            //$youtubeThumb.attr('src', 'http://img.youtube.com/vi/' + collection['youtubeId'] + '/hqdefault.jpg');
-            //$youtubePlayer = $(document.createElement('div')).addClass('deck-yt-play');
-            //$headingContent.append($youtubeThumb);
-            //$headingContent.append($youtubePlayer);
-        }
-        return $headingContent
     };
 
     return DeckView;
