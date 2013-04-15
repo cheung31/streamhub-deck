@@ -79,6 +79,7 @@ function(Hub, Streams, DeckView, $) {
         streams[collections[i].articleId] = new Hub.Streams.forCollection(collections[i]);
     }
     var view = new DeckView({
+        collections: collections,
         streams: new Streams(streams),
         el: document.getElementById("my_deck")
     });
