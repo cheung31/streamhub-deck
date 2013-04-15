@@ -19,11 +19,11 @@ body {
     right: 0;
     bottom: 0;
     -webkit-overflow-scrolling: touch;
-
-    .card {
-        padding: 15px !important;
-    }
 }
+.hub-DeckView .card {
+    padding: 15px !important;
+}
+
 .deck-columns {
     width: 9999px;
     height: 100%;
@@ -60,85 +60,6 @@ body {
     border-top: 1px solid rgb(182,196,203);
 }
 
-.deck-feed .hub-item {
-	background-color: #f2f6fc ;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(242, 246, 252)),to(rgb(220, 229, 234)));
-	background-image: -webkit-linear-gradient(top, rgb(242, 246, 252), rgb(220, 229, 234));
-	background-image: -moz-linear-gradient(top, rgb(242, 246, 252), rgb(220, 229, 234));
-	background-image: -o-linear-gradient(top, rgb(242, 246, 252), rgb(220, 229, 234));
-	background-image: -ms-linear-gradient(top, rgb(242, 246, 252), rgb(220, 229, 234));
-	background-image: linear-gradient(top, rgb(242, 246, 252), rgb(220, 229, 234));
-	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr=' #f2f6fc ', EndColorStr=' #dce5ea ');
-    border-right: 1px solid rgb(182,196,203);
-    border-left: 1px solid rgb(182,196,203);
-    border-bottom: 1px solid rgb(182,196,203);
-    cursor: pointer;
-    -webkit-animation: fadeIn 300ms;
-    -moz-animation: fadeIn 300ms;
-    animation: fadeIn 300ms;
-    .hub-timestamp { color: #222 }
-    & > article {
-        padding: 0.5em;
-    }
-    & > article.brand-instagram {
-        padding: 0;
-        position: relative;
-
-        .hub-heading {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0,0,0,0.6);
-            padding: 5px;
-            height: auto;
-            color: white;
-            overflow: hidden;
-            line-height: 22px;
-            max-height: 20px;
-            transition:all 1.5s;
-            -moz-transition:all 1.5s; /* Firefox 4 */
-            -webkit-transition:all 1.5s; /* Safari and Chrome */
-            -o-transition:all 1.5s; /* Opera */
-
-            .hub-timestamp { color: white; }
-        }
-
-        &:hover .hub-heading {
-            max-height: 300px;
-        }
-    }
-
-    & > article.brand-rss {
-        background: @green;
-        color: white;
-        min-height: 150px;
-        max-height: 400px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-
-        .hub-author {
-            float: left;
-            text-transform: uppercase;
-            font-weight: 200;
-            font-size: 11px;
-        }
-        .hub-timestamp {
-            float: right;
-        }
-        .hub-body-html {
-            padding-bottom: 10px;
-            font-size: 20px;
-            line-height: 22px;
-            clear: both;
-        }
-    }
-
-    .hub-avatar img {
-        width: 48px;
-        height: 48px;
-    }
-}
 
 /* Youtube Deck */
 .deck-col-body {
