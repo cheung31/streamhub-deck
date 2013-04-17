@@ -1,0 +1,87 @@
+html,
+body {
+    height: 100%;
+}
+
+/*
+ * Deck Layout
+ */
+.hub-DeckView {
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin-left: 0.5em;
+    padding-left: 1em;
+    padding-right: 1em;
+    height: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    -webkit-overflow-scrolling: touch;
+}
+.hub-DeckView .card {
+    padding: 15px !important;
+}
+
+.deck-columns {
+    width: 9999px;
+    height: 100%;
+    overflow: visible;
+}
+.deck-col {
+    float: left;
+    width: 300px;
+    height: 100%;
+    margin: 0 0.25em;
+    position: relative;
+}
+.deck-col-container {
+    position: relative;
+    height: 100%;
+}
+.deck-col-scroll {
+    float: left;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 299px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    min-height: 200px;
+    -webkit-overflow-scrolling: touch;
+}
+.deck-col-heading {
+    overflow: hidden;
+}
+.deck-feed {
+	vertical-align: top;
+    border-top: 1px solid rgb(182,196,203);
+}
+
+
+/* Youtube Deck */
+.deck-col-body {
+    position: relative;
+}
+.deck-col-body img {
+    width: 100%;
+}
+.deck-col-body iframe {
+    border: none;
+}
+.deck-yt-play {
+    cursor: pointer;
+    position: absolute;
+    top: 50px;
+    left: 110px;
+    width: 86px;
+    height: 61px;
+    background: url(/images/yt-buttons.png) no-repeat 0px -61px;
+    opacity: 0.95;
+}
+.deck-yt-play:hover {
+    background: url(/images/yt-buttons.png) no-repeat 0px 0px;
+    opacity: 0.95;
+}
