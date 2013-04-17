@@ -1,5 +1,5 @@
-define(['jquery', 'streamhub-sdk'],
-function($, Hub) {
+define(['jquery', 'streamhub-sdk', 'streamhub-deck/views/YoutubeHeading'],
+function($, Hub, YoutubeHeading) {
     var DeckView = function(opts) {
         opts = opts || {};
         this.el = opts.el;
@@ -27,11 +27,22 @@ function($, Hub) {
                     continue;
                 }
                 var $deckColHeading = $(document.createElement('div')).addClass('deck-col-heading');
+
                 var $title = $(document.createElement('h2')).addClass('deck-col-title');
                 $title.html(self._collections[i].headingTitle);
                 $deckColHeading.append($title);
+
+                var $heading = $(document.createElement('div')).addClass('deck-col-body');
+                var headingContent = self.createHeadingContent({
+                    el: $heading,
+                    articleId: articleId
+                });
+                $deckColHeading.append($heading);
+
                 $deckCol.append($deckColHeading);
             }
+
+            //TODO(ryanc): Reply box
 
             // Create a deck column for a particular stream
             var $listViewContainer = $(document.createElement('div')).addClass('deck-col-container');
@@ -47,6 +58,30 @@ function($, Hub) {
                 el: columnEl
             });
         });
+    };
+
+    DeckView.prototype.createHeadingContent = function(opts) {
+        var collection = opts.collection;
+        var articleId = opts.articleId;
+        var el = opts.el;
+        var headingContent;
+        var collection;
+
+        for (var i=0; i < this._collections.length; i++) {
+            if (this._collections[i].articleId == articleId) {
+                collection = this._collections[i];
+                break;
+            }
+        }
+
+        if ('youtubeId' in collection) {
+            headingContent = new YoutubeHeading({
+                el: el,
+                youtubeId: collection.youtubeId
+            });
+        }
+
+        return headingContent;
     };
 
     return DeckView;

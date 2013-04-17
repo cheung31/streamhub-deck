@@ -65,6 +65,12 @@ body {
 .deck-col-body {
     position: relative;
 }
+.deck-col-body img {
+    width: 100%;
+}
+.deck-col-body iframe {
+    border: none;
+}
 .deck-yt-play {
     cursor: pointer;
     position: absolute;
