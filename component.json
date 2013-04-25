@@ -1,11 +1,11 @@
 {
   "name": "streamhub-deck",
-  "version": "v2.0.0-alpha.1",
+  "version": "v2.0.0-alpha.2",
   "main": [
     "./src/main.css",
     "./src/main.js"
   ],
   "dependencies": {
-    "streamhub-sdk" : "git@github.com:genehallman/streamhub-sdk.git#v1.0.0-build.111"
+    "streamhub-sdk" : "git@github.com:genehallman/streamhub-sdk.git#v1.0.0-build.112"
   }
 }
