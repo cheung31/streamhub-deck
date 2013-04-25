@@ -1,15 +1,5 @@
 require.config({
     urlArgs: 'cb=' + Math.random(),
-    packages: [{
-        name: 'streamhub-sdk',
-        location: 'lib/streamhub-sdk/src'
-    },{
-        name: 'streamhub-deck',
-        location: './src/'
-    },{
-        name: 'streamhub-deck-tests',
-        location: './tests/'
-    }],
     paths: {
         jquery: 'lib/jquery/jquery',
         text: 'lib/requirejs-text/text',
@@ -20,6 +10,16 @@ require.config({
         hogan: 'lib/hogan/web/builds/2.0.0/hogan-2.0.0.amd',
         base64: 'lib/base64/base64'    
     },
+    packages: [{
+        name: 'streamhub-sdk',
+        location: 'lib/streamhub-sdk/src'
+    },{
+        name: 'streamhub-deck',
+        location: './src/'
+    },{
+        name: 'streamhub-deck-tests',
+        location: './tests/'
+    }],
     shim: {
         jasmine: {
             exports: 'jasmine'
