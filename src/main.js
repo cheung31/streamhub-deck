@@ -50,7 +50,7 @@ function($, Hub, YoutubeHeading) {
                 el: columnEl
             });
             var livefyreStreams = Hub.StreamManager.create.livefyreStreams(this._collections[i]);
-            livefyreStreams.bindView(view).start();
+            livefyreStreams.bind(view).start();
         }
     };
 
