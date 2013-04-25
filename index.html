@@ -51,11 +51,10 @@
 <script type="text/javascript">
 // Now to load the example
 require(['streamhub-sdk',
-         'streamhub-sdk/streams',
          'streamhub-deck',
          'jquery'],
-function(Hub, Streams, DeckView, $) {    
-    var collections = [
+function(Hub, DeckView, $) {
+    var collection_opts = [
         {
             network: "labs-t402.fyre.co",
             siteId: 303827,
@@ -74,13 +73,8 @@ function(Hub, Streams, DeckView, $) {
         }
     ];
 
-    var streams = {};
-    for (var i=0; i < collections.length; i++) {
-        streams[collections[i].articleId] = new Hub.Streams.forCollection(collections[i]);
-    }
     var view = new DeckView({
-        collections: collections,
-        streams: new Streams(streams),
+        collections: collection_opts,
         el: document.getElementById("my_deck")
     });
 
