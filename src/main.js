@@ -4,6 +4,7 @@ function($, Hub, YoutubeHeading) {
         opts = opts || {};
         this.el = opts.el;
         this._collections = opts.collections || [];
+        this._streams = [];
 
         if (!this._collections) {
             return;
@@ -50,6 +51,7 @@ function($, Hub, YoutubeHeading) {
                 el: columnEl
             });
             var livefyreStreams = Hub.StreamManager.create.livefyreStreams(this._collections[i]);
+            this._streams.push(livefyreStreams);
             livefyreStreams.bind(view).start();
         }
     };
