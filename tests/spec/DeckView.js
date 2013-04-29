@@ -1,27 +1,38 @@
 define([
     'jasmine-jquery',
     'streamhub-deck',
-    'streamhub-sdk/streams',
     'streamhub-sdk',
     '../MockStream'],
-function (jasmine, DeckView, Streams, Hub, MockStream) {
+function (jasmine, DeckView, Hub, MockStream) {
 
 describe('A DeckView', function () {
 
     describe ('can be constructed', function() {
-        it ('with Hub.Streams instance', function() {
-            expect(function() {
-                new DeckView({
-                    streams: new Streams()
-                });
-            });
-        });
-
-        it ('with array of collections objects', function() {
+        it ('with array of collections options objects', function() {
             expect(function() {
                 new DeckView({
                     collections: []
                 });
+            });
+        });
+
+        it ('and be bound to a StreamManager', function() {
+            expect(function() {
+                var collections = [{
+                    network: 'my_network',
+                    siteId: 123,
+                    articleId: 'my_article',
+                    environment: 'my_environment',
+                    headingTitle: 'Title 1',
+                }];
+
+                var deckView = new DeckView({
+                    collections: []
+                });
+                
+                var streamManager = new Hub.StreamManager(new MockStream(collections[0]));
+                streamManager.bind(deckView);
+                expect(streamManager._views[0]).toEqual(deckView);
             });
         });
     });
@@ -31,7 +42,6 @@ describe('A DeckView', function () {
             setFixtures('<div id="my_deck"></div>');
             var view = new DeckView({
                 collections: [],
-                streams: new Streams(),
                 el: document.getElementById("my_deck")
             });
             
@@ -42,7 +52,6 @@ describe('A DeckView', function () {
             setFixtures('<div id="my_deck"></div>');
             var view = new DeckView({
                 collections: [],
-                streams: new Streams(),
                 el: document.getElementById("my_deck")
             });
 
@@ -66,7 +75,6 @@ describe('A DeckView', function () {
 
             var view = new DeckView({
                 collections: collections,
-                streams: new Streams(streams),
                 el: document.getElementById("my_deck")
             });
 
@@ -99,7 +107,6 @@ describe('A DeckView', function () {
 
             var view = new DeckView({
                 collections: collections,
-                streams: new Streams(streams),
                 el: document.getElementById("my_deck")
             });
 
