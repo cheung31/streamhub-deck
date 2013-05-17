@@ -1,0 +1,20 @@
+.hub-item {
+    background-color: white;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    margin: .25em;
+    cursor: pointer;
+    width: 280px;
+    min-height:200px;
+    display:inline-block;
+    vertical-align:top;
+    white-space:normal;
+}
+.sort-links a, .filter-links a {
+    cursor: pointer;
+    text-decoration: underline;
+}
+#post-form {
+    padding-bottom: 20px;
+    border-bottom: 1px solid black;
+}
