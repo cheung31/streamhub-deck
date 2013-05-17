@@ -15,7 +15,7 @@ require.config({
         location: 'lib/streamhub-sdk/src'
     },{
         name: 'streamhub-deck',
-        location: './src/'
+        location: './src'
     },{
         name: 'streamhub-deck-tests',
         location: './tests/'
