@@ -51,6 +51,12 @@
 .deck-col-heading {
     overflow: hidden;
 }
+.deck-col-heading h2 {
+	color:#ccc;
+	line-height:26px;
+	font-size:22px;
+	margin:0px;
+}
 .deck-feed {
     vertical-align: top;
     border-top: 1px solid rgb(182,196,203);
@@ -70,7 +76,7 @@
 .deck-yt-play {
     cursor: pointer;
     position: absolute;
-    top: 50px;
+    top: 80px;
     left: 110px;
     width: 86px;
     height: 61px;
