@@ -1,4 +1,4 @@
-define(['jquery', 'streamhub-sdk', 'streamhub-deck/views/YoutubeHeading'],
+define(['streamhub-zepto', 'streamhub-sdk', 'streamhub-deck/views/YoutubeHeading'],
 function($, Hub, YoutubeHeading) {
     var DeckView = function(opts) {
         opts = opts || {};
