@@ -1,13 +1,20 @@
-define(['streamhub-zepto', 'streamhub-sdk', 'streamhub-deck/views/YoutubeHeading'],
-function($, Hub, YoutubeHeading) {
+define(['streamhub-zepto', 'streamhub-sdk', 'streamhub-deck/views/YoutubeHeading', 'text!streamhub-deck/main.css'],
+function($, Hub, YoutubeHeading, css) {
     var DeckView = function(opts) {
         opts = opts || {};
         this.el = opts.el;
         this._collections = opts.collections || [];
         this._streams = [];
 
+        this.includeCss = opts.includeCss == false ? false : true;
+
         if (!this._collections) {
             return;
+        }
+
+        // Include CSS
+        if (this.includeCss) {
+            console.log($('<style></style>').text(css).prependTo('head'));
         }
 
         // Setup container elements required for Deck view
