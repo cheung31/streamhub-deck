@@ -7,5 +7,15 @@
   ],
   "dependencies": {
     "streamhub-sdk" : "git@github.com:Livefyre/streamhub-sdk.git#v1.0.0-build.121"
+  },
+  "streamhub": {
+    "icon": "https://raw.github.com/cheung31/streamhub-deck/master/images/streamhubdeck-thumbbigHF-302x227.png",
+    "iconHover": "https://raw.github.com/cheung31/streamhub-deck/master/images/streamhubdeck-thumbbigLF-302x227.png",
+    "background": "https://raw.github.com/cheung31/streamhub-deck/master/images/appgallery-streamhubdeck-v2.jpg",
+    "sampleImages": [
+      "https://raw.github.com/cheung31/streamhub-deck/master/images/streamhubdeck-thumbprev-700x525_1.png",
+      "https://raw.github.com/cheung31/streamhub-deck/master/images/streamhubdeck-thumbprev-700x525_2.png",
+      "https://raw.github.com/cheung31/streamhub-deck/master/images/streamhubdeck-thumbprev-700x525_3.png"
+    ]
   }
 }
