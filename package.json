@@ -15,13 +15,6 @@
 		"postinstall": "./node_modules/bower/bin/bower install",
 		"doc": "rm -rf docs && ./node_modules/jsdoc/jsdoc -c tools/jsdoc.conf.json main.js views/*.js README.md -d docs",
 		"test": "open tests/index.html",
-        "start": "./node_modules/http-server/bin/http-server"
-	},
-	"streamhub": {
-	    "sampleImages": [
-	        "http://raw.github.com/cheung31/streamhub-deck/master/images/sample.png",
-	        "http://raw.github.com/cheung31/streamhub-deck/master/images/sb-deck.png",
-	        "http://raw.github.com/cheung31/streamhub-deck/master/images/streamhub-deck.png"
-	    ]
-    }
+        	"start": "./node_modules/http-server/bin/http-server"
+	}
 }
