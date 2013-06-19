@@ -6,7 +6,8 @@
     "./src/main.js"
   ],
   "dependencies": {
-    "streamhub-sdk": "git://github.com/Livefyre/streamhub-sdk.git"
+    "streamhub-sdk": "git://github.com/Livefyre/streamhub-sdk.git",
+    "streamhub-zepto": "git://github.com/genehallman/streamhub-zepto.git"
   },
   "streamhub": {
     "icon": "https://raw.github.com/cheung31/streamhub-deck/master/images/streamhubdeck-thumbbigHF-302x227.png",
