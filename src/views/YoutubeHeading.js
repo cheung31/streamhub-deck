@@ -1,4 +1,4 @@
-define(['jquery'],
+define(['streamhub-zepto'],
 function($) {
     var YoutubeHeading = function(opts) {
         this.el = opts.el;
