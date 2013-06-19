@@ -1,127 +1,76 @@
-# StreamHub Deck
+# streamhub-deck
 
-Add a *"[TweetDeck](http://tweetdeck.com)"*-esque columned widget of content from [Livefyre StreamHub](http://livefyre.com/streamhub) to your website.
-
-### What is Livefyre StreamHub?
-[Livefyre StreamHub](http://www.livefyre.com/streamhub/) is the web's first Engagement Management System. StreamHub turns your site into a real-time social experience. Curate images, videos, and Tweets from across the social web, right into live blogs, chats, widgets, and dashboards. The world's biggest publishers and brands use StreamHub to power their online Content Communities. Access Livefyre StreamHub with the [StreamHub SDK](http://github.com/livefyre/streamhub-sdk).
-
-### What is StreamHub Deck?
-StreamHub Deck is a widget that can be plugged into your website to display the social content provided by Livefyre StreamHub via the [StreamHub SDK](http://github.com/livefyre/streamhub-sdk/). As seen in the screenshots below, you can create a TweetDeck-like layout of tweets for various topics relevant to your website/app.
-
-> The StreamHub Deck with a custom header (title and Youtube video) and tweets as content.
-![StreamHub Deck](https://raw.github.com/cheung31/streamhub-deck/master/images/streamhub-deck.png)
-
-
-> The StreamHub Deck as used in the [Livefyre Super Bowl NewsHub](http://superbowl.livefyre.com/#/commercials/)
-![Super Bowl NewsHub Deck](https://raw.github.com/cheung31/streamhub-deck/master/images/sb-deck.png)
-
-## Example Usage
-#### Configuring StreamHub collections to appear in Deck columns
-You can specify the StreamHub collections that will appear in the Deck columns, and the title/heading that will appear above each corresponding Deck column in ```config.js```.
-
-       define({
-          collections: [
-              {
-                  siteId: 303827,
-                  articleId: 'scoreboard_demo_0',
-                  headingTitle: 'Title 1',
-                  youtubeId: 'ESEdOAQuYQ4'
-              },
-              {
-                  siteId: 303827,
-                  articleId: 'feed_ticker_0',
-                  headingTitle: 'Title 2',
-                  youtubeId: 'mHXx7HCibEg'
-              }
-          ]
-        });
-
-		
-#### Rendering the ```DeckView```
-        // Source-specific templates used by Deck View, etc. (e.g. RSS templates, Twitter templates)
-        // Supported sources and their templates
-        var sources = {
-            twitter: {
-                template: function (d) {
-                    // Attempt to set the tweet_id for the template
-                    var content_id = d.id;
-                    if (content_id) {
-                        d.tweet_id = content_id.split('@twitter.com')[0].substring('tweet-'.length);
-                    }
-                    // Attempt to get photo attachment
-                    if (d.attachments && d.attachments[0].thumbnail_url) {
-                        d.image_url = d.attachments[0].thumbnail_url;
-                    }
-                    return Mustache.compile(TwitterContentTemplate)(d);
-                }
-            },
-            rss: {
-                template: function (d) {
-                    return Mustache.compile(InstagramHtml)(d);
-                }
-            }
-        };
-
-        // Initialize DeckView, with multiple collections (articleId's)
-        var collections = [];
-        for (var i = 0; i < deckConfig.collections.length; i++) {
-            var collectionMeta = deckConfig.collections[i];
-            var col = new Hub.Collection().setRemote({
-                sdk: sdk,
-                siteId: collectionMeta.siteId,
-                articleId: collectionMeta.articleId
-            });
-            $.extend(col, collectionMeta);
-            collections.push(col);
-        }
-
-        // Initialize DeckView with collections
-        var view = new DeckView({
-            el: document.getElementById("my_deck"),
-            collections: collections,
-            feedView: DeckFeedView,
-            sources: sources
-        });
-        view.render();
-        
+streamhub-deck is a [StreamHub App](http://apps.livefyre.com) that shows social content like comments, photos, and tweets in a TweetDeck layout. Display social content for various topics relevant to your website or app.
 
 ## Getting Started
-#### Getting the ```streamhub-deck``` module with ```npm```
-```npm``` is used to install the [Bower](http://twitter.github.com/bower/) browser package management system. The latest stable version of ```streamhub-deck``` and its dependencies are installed into ```/components```.
 
-#### Loading the ```streamhub-deck``` module with RequireJS
-Now that the ```streamhub-deck``` module is installed. It needs to be loaded with an [AMD](http://requirejs.org/docs/whyamd.html) loader. [RequireJS](http://requirejs.org/) is recommended.
+The quickest way to use streamhub-feed is to use the built version hosted on Livefyre's CDN.
 
-In the [RequireJS config](http://requirejs.org/docs/api.html#config) add ```streamhub-deck``` as a package:
+### Dependencies
 
-    require.config({
-    …
-        packages: [{
-            name: 'streamhub-deck',
-            location: 'components/streamhub-deck' //The path to streamhub-deck module
-        }]
-    …
-    });
+streamhub-deck depends on [streamhub-sdk](https://github.com/livefyre/streamhub-sdk). Ensure it's been included in your page.
 
-That allows us to use the ```streamhub-deck``` module like so with the benefit of its dependencies being loaded as they are needed:
+	<script src="http://cdn.livefyre.com/libs/sdk/v1.0.1-build.147/streamhub-sdk.min.gz.js"></script>
 
-    require(["streamhub-deck"], function(DeckView) {
-        //See the Example Usage above on how to use DeckView!
-    });
+Include streamhub-deck too.
+
+	<script src="http://cdn.livefyre.com/libs/apps/cheung31/streamhub-deck/vv2.0.0-alpha.4.build.1/streamhub-deck.min.js"></script>
+	
+Optionally, include some reasonable default CSS rules for StreamHub Content. This stylesheet is provided by the StreamHub SDK.
+
+    <link rel="stylesheet" href="http://cdn.livefyre.com/libs/sdk/v1.0.1-build.147/streamhub-sdk.gz.css" />
+
+
+### Usage
+
+1. Require streamhub-sdk and streamhub-deck
+
+        var Hub = Livefyre.require('streamhub-sdk'),
+            DeckView = Livefyre.require('streamhub-deck');
+            
+          
+1. An empty feed is no fun, define an array of Livefyre Collections to be displayed. These collections will be rendered as columns of respective streams in the DeckView.
+
+        var my_collections = [
+        	{
+            	network: "labs.fyre.co",
+	            siteId: 315833,
+    	        articleId: 'example',
+        		title: 'COLUMN 1'
+        	}
+        	...
+        ];
     
-## Running the Demo
-To see the Deck View in action:
+1. Create a DeckView, passing the DOMElement to render it in (```el``` option). Also, specify the collections you wish to display as columns in the DeckView (```collections``` option). (Note: DeckView automatically starts all streams for each respective collection on instantiation. There is no need to manually start the streams.)
 
-1. ```git clone git@github.com:cheung31/streamhub-deck.git```
-2. ```cd streamhub-deck```
-3. ```npm start```
+        var deckView = new DeckView({
+            el: document.getElementById('deck'),
+            collections: my_collections
+        });
 
-To see the demo: <http://localhost:8080>
+You now have a Deck! See this all in action on [this jsfiddle](http://jsfiddle.net/nmVz3/).
 
-To see the docs: <http://localhost:8080/docs>
+## Local Development
 
-To see the tests: <http://localhost:8080/tests>
+Instead of using a built version of streamhub-deck from Livefyre's CDN, you may wish to fork, develop on the repo locally, or include it in your existing JavaScript application.
 
+Clone this repo
 
-## Authors and Contributors
-2013, Ryan Cheung (@cheung31), Ben Goering (@bengo) for Livefyre Labs.
+    git clone https://github.com/cheung31/streamhub-deck
+
+Development dependencies are managed by [npm](https://github.com/isaacs/npm), which you should install first.
+
+With npm installed, install streamhub-deck's dependencies. This will also download [Bower](https://github.com/bower/bower) and use it to install browser dependencies.
+
+    cd streamhub-deck
+    npm install
+
+This repository's package.json includes a helpful script to launch a web server for development
+
+    npm start
+
+You can now visit [http://localhost:8080/](http://localhost:8080/) to see an example feed loaded via RequireJS. Now tweak to your heart's content.
+
+# StreamHub
+
+[Livefyre StreamHub](http://www.livefyre.com/streamhub/) is used by the world's biggest brands and publishers to power their online Content Communities. StreamHub turns your site into a real-time social experience. Curate images, videos, and Tweets from across the social web, right into live blogs, chats, widgets, and dashboards. Want StreamHub? [Contact Livefyre](http://www.livefyre.com/contact/).
