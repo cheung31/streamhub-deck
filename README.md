@@ -36,7 +36,7 @@ Optionally, include some reasonable default CSS rules for StreamHub Content. Thi
             	network: "labs.fyre.co",
 	            siteId: 315833,
     	        articleId: 'example',
-        		title: 'COLUMN 1'
+        		headingTitle: 'COLUMN 1'
         	}
         	...
         ];
@@ -48,7 +48,7 @@ Optionally, include some reasonable default CSS rules for StreamHub Content. Thi
             collections: my_collections
         });
 
-You now have a Deck! See this all in action on [this jsfiddle](http://jsfiddle.net/nmVz3/).
+You now have a Deck! See this all in action on [this jsfiddle](http://jsfiddle.net/nmVz3/2/).
 
 ## Local Development
 
