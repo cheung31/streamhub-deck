@@ -48,7 +48,7 @@ Optionally, include some reasonable default CSS rules for StreamHub Content. Thi
             collections: my_collections
         });
 
-You now have a Deck! See this all in action on [this jsfiddle](http://jsfiddle.net/nmVz3/3/).
+You now have a Deck! See this all in action on [this jsfiddle](http://jsfiddle.net/nmVz3/4/).
 
 ## Local Development
 
