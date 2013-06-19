@@ -14,7 +14,7 @@ function($, Hub, YoutubeHeading, css) {
 
         // Include CSS
         if (this.includeCss) {
-            console.log($('<style></style>').text(css).prependTo('head'));
+            $('<style></style>').text(css).prependTo('head');
         }
 
         // Setup container elements required for Deck view
