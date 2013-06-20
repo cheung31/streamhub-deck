@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="http://cdn.livefyre.com/libs/sdk/v1.0.1-build.135/streamhub-sdk.css" />
+        <script type='text/javascript' src="/lib/requirejs/require.js"></script>
+        <script type='text/javascript' src="requirejs.conf.js"></script>
+        <link rel='stylesheet' href="./example.css" />
+    </head>
+    <body>
+        <div id="example">
+            <img id="spinner" src="/images/spinner.gif"/>
+        </div>       
+
+        <script type='text/javascript'>
+        	require(['jquery', 'streamhub-sdk', './example.js'], function($, Hub, example) {
+                var $el = $('#example');
+        	    var view = example($el[0]);
+        	    $('#spinner').remove();
+        	});
+        </script>
+    </body>
+</html>
