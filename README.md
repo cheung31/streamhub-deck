@@ -14,7 +14,7 @@ streamhub-deck depends on [streamhub-sdk](https://github.com/livefyre/streamhub-
 
 Include streamhub-deck too.
 
-	<script src="http://cdn.livefyre.com/libs/apps/cheung31/streamhub-deck/vv2.0.0-alpha.4.build.1/streamhub-deck.min.js"></script>
+	<script src="http://cdn.livefyre.com/libs/apps/cheung31/streamhub-deck/v2.0.0-alpha.5-build.14/streamhub-deck.min.js"></script>
 	
 Optionally, include some reasonable default CSS rules for StreamHub Content. This stylesheet is provided by the StreamHub SDK.
 
@@ -48,7 +48,7 @@ Optionally, include some reasonable default CSS rules for StreamHub Content. Thi
             collections: my_collections
         });
 
-You now have a Deck! See this all in action on [this jsfiddle](http://jsfiddle.net/nmVz3/4/).
+You now have a Deck! See this all in action on [this jsfiddle](http://jsfiddle.net/nmVz3/5/).
 
 ## Local Development
 
