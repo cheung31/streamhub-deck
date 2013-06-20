@@ -1,5 +1,14 @@
 define(['streamhub-zepto'],
 function($) {
+    /**
+     * A UI component of Deck, that displays a heading for a given column.
+     * Optionally if a Youtube video id is specified in the options, will embed
+     * the video in the header.
+     * @param opts {Object} A set of options to config the heading with
+     * @param opts.el {HTMLElement} The element in which to render the heading
+     * @param opts.youtubeId {string} Optional Youtube video id to embed a video in heading
+     * @constructor
+     */
     var YoutubeHeading = function(opts) {
         this.el = opts.el;
         this._youtubeId = opts.youtubeId || '';
@@ -18,7 +27,9 @@ function($) {
         });
     };
 
-    
+    /**
+     * Embed the a youtube video player in the heading if youtube id specified.
+     */
     YoutubeHeading.prototype.embedVideo = function() {
         var youtubeId = this._youtubeId;
         var $headingBody = this.el;

@@ -1,5 +1,12 @@
 define(['streamhub-zepto', 'streamhub-sdk', 'streamhub-deck/views/YoutubeHeading', 'text!streamhub-deck/main.css'],
 function($, Hub, YoutubeHeading, css) {
+    /**
+     * A view that displays StreamHub collections in TweetDeck-like columns.
+     * @param opts {Object} A set of options to config the view with
+     * @param opts.el {HTMLElement} The element in which to render the streamed content
+     * @param opts.includeCss {boolean} Whether to include the default stylesheet for DeckView
+     * @constructor
+     */
     var DeckView = function(opts) {
         opts = opts || {};
         this.el = opts.el;
@@ -63,8 +70,14 @@ function($, Hub, YoutubeHeading, css) {
         }
     };
 
+    /**
+     * Adds the heading to a given column in DeckView
+     * @param opts {Object} A Content model to add to the MediaWallView
+     * @param opts.articleId {Object} The article id of the column to create the heading
+     * @param opts.el {HTMLElement} The element to create the heading in
+     * @return {HTMLElement} The created heading element for a column
+     */
     DeckView.prototype.createHeadingContent = function(opts) {
-        var collection = opts.collection;
         var articleId = opts.articleId;
         var el = opts.el;
         var headingContent;
