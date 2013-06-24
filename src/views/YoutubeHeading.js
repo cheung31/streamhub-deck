@@ -1,4 +1,4 @@
-define(['streamhub-zepto'],
+define(['jquery'],
 function($) {
     /**
      * A UI component of Deck, that displays a heading for a given column.

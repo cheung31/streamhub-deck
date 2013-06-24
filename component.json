@@ -7,7 +7,6 @@
   ],
   "dependencies": {
     "streamhub-sdk": "git://github.com/Livefyre/streamhub-sdk.git",
-    "streamhub-zepto": "git://github.com/genehallman/streamhub-zepto.git",
     "requirejs": "~2.1.5",
     "jquery": "~1.9.1",
     "requirejs-text": "~2.0.5",
