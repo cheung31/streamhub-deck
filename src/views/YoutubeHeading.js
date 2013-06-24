@@ -1,4 +1,4 @@
-define(['jquery'],
+define(['streamhub-sdk/jquery'],
 function($) {
     /**
      * A UI component of Deck, that displays a heading for a given column.

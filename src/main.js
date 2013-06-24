@@ -1,4 +1,4 @@
-define(['jquery', 'streamhub-sdk', 'streamhub-deck/views/YoutubeHeading', 'text!streamhub-deck/main.css'],
+define(['streamhub-sdk/jquery', 'streamhub-sdk', 'streamhub-deck/views/YoutubeHeading', 'text!streamhub-deck/main.css'],
 function($, Hub, YoutubeHeading, css) {
     /**
      * A view that displays StreamHub collections in TweetDeck-like columns.
