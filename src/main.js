@@ -1,5 +1,10 @@
-define(['jquery', 'streamhub-sdk', 'streamhub-deck/views/YoutubeHeading', 'text!streamhub-deck/main.css'],
-function($, Hub, YoutubeHeading, css) {
+define([
+    'streamhub-sdk/jquery',
+    'streamhub-sdk/collection',
+    'streamhub-sdk/content/views/content-list-view',
+    'streamhub-deck/views/YoutubeHeading',
+    'text!streamhub-deck/main.css'],
+function($, Collection, ContentListView, YoutubeHeading, css) {
     /**
      * A view that displays StreamHub collections in TweetDeck-like columns.
      * @param opts {Object} A set of options to config the view with
@@ -61,12 +66,11 @@ function($, Hub, YoutubeHeading, css) {
             $deckCol.append($listViewContainer);
 
             var columnEl = $feed[0];
-            var view = new Hub.Views.ListView({
+            var view = new ContentListView({
                 el: columnEl
             });
-            var livefyreStreams = Hub.StreamManager.create.livefyreStreams(this._collections[i]);
-            this._streams.push(livefyreStreams);
-            livefyreStreams.bind(view).start();
+            var collection = new Collection(this._collections[i]);
+            collection.pipe(view);
         }
     };
 

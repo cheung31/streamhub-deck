@@ -1,12 +1,12 @@
 {
   "name": "streamhub-deck",
-  "version": "2.0.0-alpha.5",
+  "version": "2.0.0",
   "main": [
     "./src/main.css",
     "./src/main.js"
   ],
   "dependencies": {
-    "streamhub-sdk": "git://github.com/Livefyre/streamhub-sdk.git",
+    "streamhub-sdk": "git://github.com/Livefyre/streamhub-sdk.git#~v2.0.0",
     "requirejs": "~2.1.5",
     "jquery": "~1.10.2",
     "requirejs-text": "~2.0.5",
