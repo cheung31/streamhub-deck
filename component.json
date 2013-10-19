@@ -13,8 +13,8 @@
     "hogan": "latest",
     "requirejs-hogan-plugin": "git://github.com/millermedeiros/requirejs-hogan-plugin.git#~0.2.1"
   },
-  devDependencies: {
-    "almond": "~0.2.5",
+  "devDependencies": {
+    "almond": "~0.2.5"
   },
   "streamhub": {
     "icon": "https://raw.github.com/cheung31/streamhub-deck/master/images/streamhubdeck-thumbbigHF-302x227.png",
