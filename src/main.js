@@ -26,7 +26,7 @@ function($, Collection, ContentListView, YoutubeHeading, css) {
 
         // Include CSS
         if (this.includeCss) {
-            $('<style></style>').html(css).prependTo('head');
+            $('<style>' + css + '</style>').prependTo('head');
         }
 
         // Setup container elements required for Deck view
