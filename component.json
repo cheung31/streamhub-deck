@@ -1,6 +1,6 @@
 {
   "name": "streamhub-deck",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "main": [
     "./src/main.css",
     "./src/main.js"
