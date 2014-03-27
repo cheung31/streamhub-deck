@@ -10,15 +10,15 @@ The quickest way to use streamhub-feed is to use the built version hosted on Liv
 
 streamhub-deck depends on [streamhub-sdk](https://github.com/livefyre/streamhub-sdk). Ensure it's been included in your page.
 
-	<script src="http://cdn.livefyre.com/libs/sdk/v1.0.1-build.147/streamhub-sdk.min.gz.js"></script>
+	<script src="http://cdn.livefyre.com/libs/sdk/v2.1.1/streamhub-sdk.min.js"></script>
 
 Include streamhub-deck too.
 
-	<script src="http://cdn.livefyre.com/libs/apps/cheung31/streamhub-deck/v2.0.0-alpha.5-build.14/streamhub-deck.min.js"></script>
+	<script src="http://cdn.livefyre.com/libs/apps/cheung31/streamhub-deck/v2.0.2-build.35/streamhub-deck.min.js"></script>
 	
 Optionally, include some reasonable default CSS rules for StreamHub Content. This stylesheet is provided by the StreamHub SDK.
 
-    <link rel="stylesheet" href="http://cdn.livefyre.com/libs/sdk/v1.0.1-build.147/streamhub-sdk.gz.css" />
+    <link rel="stylesheet" href="http://cdn.livefyre.com/libs/sdk/v2.1.1/streamhub-sdk.min.css" />
 
 
 ### Usage
@@ -48,7 +48,7 @@ Optionally, include some reasonable default CSS rules for StreamHub Content. Thi
             collections: my_collections
         });
 
-You now have a Deck! See this all in action on [this jsfiddle](http://jsfiddle.net/nmVz3/5/).
+You now have a Deck! See this all in action on [this jsfiddle](http://jsfiddle.net/nmVz3/9/).
 
 ## Local Development
 
