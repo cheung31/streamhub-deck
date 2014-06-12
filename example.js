@@ -8,7 +8,7 @@ define(function(require) {
 		        network: "labs.fyre.co",
                 environment: "livefyre.com",
                 siteId: "315833",
-                articleId: 'livefyre-tweets'
+                articleId: 'livefyre-tweets',
 		        headingTitle: 'Livefyre',
 		        youtubeId: '6f5vXjHeWCs'
 		    },
@@ -16,7 +16,7 @@ define(function(require) {
 		        network: "labs.fyre.co",
                 environment: "livefyre.com",
                 siteId: "315833",
-                articleId: 'livefyre-tweets'
+                articleId: 'livefyre-tweets',
 		        headingTitle: 'More Livefyre',
 		        youtubeId: 'HxRiyuXSIL0'
 		    },
@@ -24,7 +24,7 @@ define(function(require) {
                 network: "labs.fyre.co",
                 environment: "livefyre.com",
                 siteId: "315833",
-                articleId: 'livefyre-tweets'
+                articleId: 'livefyre-tweets',
                 headingTitle: 'Livefyre @ Roadmap',
                 youtubeId: 'D7AfEp1UxiU'
             }
