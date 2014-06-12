@@ -10,7 +10,8 @@ require.config({
         hogan: 'lib/hogan/web/builds/2.0.0/hogan-2.0.0.amd',
         base64: 'lib/base64/base64',
         'event-emitter': 'lib/event-emitter/src/event-emitter',
-        inherits: 'lib/inherits/inherits'
+        inherits: 'lib/inherits/inherits',
+        debug: 'lib/debug/debug'
     },
   packages: [{
     name: "streamhub-sdk",
@@ -43,8 +44,10 @@ require.config({
   },{
     name: 'streamhub-deck-tests',
     location: './tests/'
-  }
-  ],
+  },{
+    name: "auth",
+    location: "lib/auth/src"
+  }],
     shim: {
         jasmine: {
             exports: 'jasmine'
