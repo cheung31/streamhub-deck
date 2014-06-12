@@ -5,28 +5,28 @@ define(function(require) {
     return function(el) {
 		var collection_opts = [
 		    {
-		        network: "labs-t402.fyre.co",
-		        siteId: "303827",
-		        articleId: 'scoreboard_demo_0',
-		        environment: "t402.livefyre.com",
-		        headingTitle: 'Snowboarding',
-		        youtubeId: 'ESEdOAQuYQ4'
+		        network: "labs.fyre.co",
+                environment: "livefyre.com",
+                siteId: "315833",
+                articleId: 'livefyre-tweets'
+		        headingTitle: 'Livefyre',
+		        youtubeId: '6f5vXjHeWCs'
 		    },
 		    {
-		        network: "labs-t402.fyre.co",
-		        siteId: "303827",
-		        articleId: 'feed_ticker_0',
-		        environment: "t402.livefyre.com",
-		        headingTitle: 'Civilization',
-		        youtubeId: 'mHXx7HCibEg'
+		        network: "labs.fyre.co",
+                environment: "livefyre.com",
+                siteId: "315833",
+                articleId: 'livefyre-tweets'
+		        headingTitle: 'More Livefyre',
+		        youtubeId: 'HxRiyuXSIL0'
 		    },
             {
-                network: "labs-t402.fyre.co",
-                siteId: "303827",
-                articleId: 'sh_col_51_1366914813',
-                environment: "t402.livefyre.com",
-                headingTitle: 'WATSKY!',
-                youtubeId: '0M1L15hpphQ'
+                network: "labs.fyre.co",
+                environment: "livefyre.com",
+                siteId: "315833",
+                articleId: 'livefyre-tweets'
+                headingTitle: 'Livefyre @ Roadmap',
+                youtubeId: 'D7AfEp1UxiU'
             }
 		];
 		

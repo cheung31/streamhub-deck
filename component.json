@@ -1,16 +1,17 @@
 {
   "name": "streamhub-deck",
-  "version": "2.0.2",
+  "version": "2.1.0",
   "main": [
     "./src/main.css",
     "./src/main.js"
   ],
   "dependencies": {
-    "streamhub-sdk": "git://github.com/Livefyre/streamhub-sdk.git#~v2.1.1",
+    "streamhub-sdk": "git://github.com/Livefyre/streamhub-sdk.git#~v2.11",
     "requirejs": "~2.1.5",
     "jquery": "~1.10.2",
+    "cajon": "git://github.com/requirejs/cajon.git#~0.1.11",
     "requirejs-text": "~2.0.5",
-    "hogan": "latest",
+    "hogan": "3.0.0",
     "requirejs-hogan-plugin": "git://github.com/millermedeiros/requirejs-hogan-plugin.git#~0.2.1"
   },
   "devDependencies": {
@@ -25,5 +26,8 @@
       "https://raw.github.com/cheung31/streamhub-deck/master/images/streamhubdeck-thumbprev-700x525_2.png",
       "https://raw.github.com/cheung31/streamhub-deck/master/images/streamhubdeck-thumbprev-700x525_3.png"
     ]
+  },
+  "resolutions": {
+    "base64": "~0.4.0"
   }
 }
